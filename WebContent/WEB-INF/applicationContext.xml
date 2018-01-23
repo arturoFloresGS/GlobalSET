@@ -1,0 +1,1570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!-- Instance of transaction template -->
+	<bean id="transactionTemplate"
+		class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="transactionManager"></property>
+	</bean>
+
+	<!-- Our main DAO class bean object to execute query <bean id="consultasGenerales" 
+		class="com.webset.set.utilerias.ConsultasGenerales"> <property name="transactionTemplate" 
+		ref="transactionTemplate"></property> </bean> -->
+	<!-- Egresos -->
+	
+
+	<bean id="pagosEnSAPBusiness" class="com.webset.set.egresos.business.PagosEnSAPBusiness">
+		<property name="pagosEnSAPDao" ref="pagosEnSAPDao" />
+	</bean>
+
+	<bean id="pagosEnSAPDao" class="com.webset.set.egresos.dao.impl.PagosEnSAPDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="decuentosPropuestasBusiness"
+		class="com.webset.set.egresos.business.AplicacionDescuentosPropuestasBusinessImpl">
+		<property name="decuentosPropuestasDao" ref="decuentosPropuestasDao" />
+	</bean>
+	<bean id="decuentosPropuestasDao"
+		class="com.webset.set.egresos.dao.impl.AplicacionDescuentosPropuestasDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objConsultaSolicitudPagoSinPolizaBusinessImpl"
+		class="com.webset.set.egresos.business.ConsultaSolicitudPagoSinPolizaBusinessImpl">
+		<property name="objConsultaSolicitudPagoSinPolizaDao" ref="objConsultaSolicitudPagoSinPolizaDao" />
+	</bean>
+
+	<bean id="objConsultaSolicitudPagoSinPolizaDao"
+		class="com.webset.set.egresos.dao.impl.ConsultaSolicitudPagoSinPolizaDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="factorajeBusinessImpl" class="com.webset.set.egresos.business.FactorajeBusinessImpl">
+		<property name="pagosEnSAPBusiness" ref="pagosEnSAPBusiness" />
+		<property name="factorajeDao" ref="factorajeDao" />
+	</bean>
+
+	<bean id="factorajeDao" class="com.webset.set.egresos.dao.impl.FactorajeDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="objMantenimientoBitacoraRentasBusinessImpl"
+		class="com.webset.set.egresos.business.MantenimientoBitacoraRentasBusinessImpl">
+		<property name="objMantenimientoBitacoraRentasDao" ref="objMantenimientoBitacoraRentasDao" />
+	</bean>
+
+	<bean id="objMantenimientoBitacoraRentasDao"
+		class="com.webset.set.egresos.dao.impl.MantenimientoBitacoraRentasDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="pagosPedientesBusinessImpl"
+		class="com.webset.set.egresos.business.PagosPedientesBusinessImpl">
+		<property name="pagosPedientesDao" ref="pagosPedientesDao" />
+	</bean>
+
+	<bean id="pagosPedientesDao" class="com.webset.set.egresos.dao.impl.PagosPedientesDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="capturaSolicitudesPagoBusinessImpl"
+		class="com.webset.set.egresos.business.CapturaSolicitudesPagoBusinessImpl">
+		<property name="capturaSolicitudesPagoDao" ref="capturaSolicitudesPagoDao" />
+	</bean>
+
+	<bean id="capturaSolicitudesPagoDao"
+		class="com.webset.set.egresos.dao.impl.CapturaSolicitudesPagoDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="modificacionPorBloqueBusinessImpl"
+		class="com.webset.set.egresos.business.ModificacionPorBloqueBusinessImpl">
+		<property name="modificacionPorBloqueDao" ref="modificacionPorBloqueDao" />
+	</bean>
+
+	<bean id="modificacionPorBloqueDao"
+		class="com.webset.set.egresos.dao.impl.ModificacionPorBloqueDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
+	<bean id="altaFinanciamientoBusinessImpl"
+		class="com.webset.set.financiamiento.business.AltaFinanciamientoBusinessImpl">
+		<property name="altaFinanciamientoDao" ref="altaFinanciamientoDao" />
+	</bean>
+
+	<bean id="altaFinanciamientoDao"
+		class="com.webset.set.financiamiento.dao.impl.AltaFinanciamientoDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="financiamientoModificacionCBusinessImpl"
+		class="com.webset.set.financiamiento.business.FinanciamientoModificacionCBusinessImpl">
+		<property name="financiamientoModificacionCDao" ref="financiamientoModificacionCDao" />
+	</bean>
+
+	<bean id="financiamientoModificacionCDao"
+		class="com.webset.set.financiamiento.dao.impl.FinanciamientoModificacionCDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="gastosFinanciamientoCBusinessImpl"
+		class="com.webset.set.financiamiento.business.GastosFinanciamientoCBusinessImpl">
+		<property name="gastosFinanciamientoCDao" ref="gastosFinanciamientoCDao" />
+	</bean>
+
+	<bean id="gastosFinanciamientoCDao"
+		class="com.webset.set.financiamiento.dao.impl.GastosFinanciamientoCDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="alertaVencimientoBusinessImpl"
+		class="com.webset.set.financiamiento.business.AlertaVencimientoBusinessImpl">
+		<property name="alertaVencimientoDao" ref="alertaVencimientoDao" />
+	</bean>
+
+	<bean id="alertaVencimientoDao"
+		class="com.webset.set.financiamiento.dao.impl.AlertaVencimientoDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="vencimientoFinanciamientoCBusinessImpl"
+		class="com.webset.set.financiamiento.business.VencimientoFinanciamientoCBusinessImpl">
+		<property name="vencimientoFinanciamientoCDao" ref="vencimientoFinanciamientoCDao" />
+	</bean>
+
+	<bean id="vencimientoFinanciamientoCDao"
+		class="com.webset.set.financiamiento.dao.impl.VencimientoFinanciamientoCDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="avalesGarantiasFCBusinessImpl"
+		class="com.webset.set.financiamiento.business.AvalesGarantiasFCBusinessImpl">
+		<property name="avalesGarantiasFCDao" ref="avalesGarantiasFCDao" />
+	</bean>
+
+	<bean id="avalesGarantiasFCDao"
+		class="com.webset.set.financiamiento.dao.impl.AvalesGarantiasFCDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="provisionInteresesCBusinessImpl"
+		class="com.webset.set.financiamiento.business.ProvisionInteresesCBusinessImpl">
+		<property name="provisionInteresesCDao" ref="provisionInteresesCDao" />
+	</bean>
+
+	<bean id="provisionInteresesCDao"
+		class="com.webset.set.financiamiento.dao.impl.ProvisionInteresesCDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="reportePasivosFBusinessImpl"
+		class="com.webset.set.financiamiento.business.ReportePasivosFBusinessImpl">
+		<property name="reportePasivosFDao" ref="reportePasivosFDao" />
+	</bean>
+
+	<bean id="reportePasivosFDao"
+		class="com.webset.set.financiamiento.dao.impl.ReportePasivosFDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="reporteAnalisisLineasCBusinessImpl"
+		class="com.webset.set.financiamiento.business.ReporteAnalisisLineasCBusinessImpl">
+		<property name="reporteAnalisisLineasCreditoDao" ref="reporteAnalisisLineasCreditoDao" />
+	</bean>
+
+	<bean id="reporteAnalisisLineasCreditoDao"
+		class="com.webset.set.financiamiento.dao.impl.ReporteAnalisisLineasCDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="reporteDeCuposBussines" class="com.webset.set.egresos.business.ReporteDeCuposBusiness">
+		<property name="reporteDeCuposDao" ref="reporteDeCuposDao" />
+	</bean>
+
+	<bean id="reporteDeCuposDao" class="com.webset.set.egresos.dao.ReporteDeCuposDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="propuestaPagoManualBusinessImpl"
+		class="com.webset.set.egresos.business.PropuestaPagoManualBusinessImpl">
+		<property name="propuestaPagoManualDao" ref="propuestaPagoManualDao" />
+	</bean>
+
+	<bean id="propuestaPagoManualDao"
+		class="com.webset.set.egresos.dao.impl.PropuestaPagoManualDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="consultaPropuestasBusinessImpl"
+		class="com.webset.set.egresos.business.ConsultaPropuestasBusinessImpl">
+		<property name="consultaPropuestasDao" ref="consultaPropuestasDao" />
+	</bean>
+
+	<bean id="consultaPropuestasDao"
+		class="com.webset.set.egresos.dao.impl.ConsultaPropuestasDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="consultaPropuestasBBusinessImpl"
+		class="com.webset.set.egresos.business.ConsultaPropuestasBBusinessImpl">
+		<property name="consultaPropuestasBDao" ref="consultaPropuestasBDao" />
+	</bean>
+
+	<bean id="consultaPropuestasBDao"
+		class="com.webset.set.egresos.dao.impl.ConsultaPropuestasBDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="pagoPropuestasBusinessImpl"
+		class="com.webset.set.egresos.business.PagoPropuestasBusinessImpl">
+		<property name="pagoPropuestasDao" ref="pagoPropuestasDao" />
+	</bean>
+
+	<bean id="pagoDePropuestasSetBusinessImpl"
+		class="com.webset.set.egresos.business.PagoDePropuestasSetBusinessImpl">
+		<property name="pagoDePropuestasSetDao" ref="pagoDePropuestasSetDao" />
+	</bean>
+
+	<bean id="compensarPropuestasBusinessImpl"
+		class="com.webset.set.egresos.business.CompensarPropuestasBusinessImpl">
+		<property name="compensarPropuestasDao" ref="compensarPropuestasDao" />
+		<property name="pagosEnSAPBusiness" ref="pagosEnSAPBusiness" />
+	</bean>
+
+	<bean id="pagoPropuestasDao" class="com.webset.set.egresos.dao.impl.PagoPropuestasDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="transactionTemplate" ref="transactionTemplate"></property>
+	</bean>
+
+	<bean id="pagoDePropuestasSetDao"
+		class="com.webset.set.egresos.dao.impl.PagoDePropuestasSetDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="compensarPropuestasDao"
+		class="com.webset.set.egresos.dao.impl.CompensarPropuestasDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="confirmacionTransferenciasBusinessImpl"
+		class="com.webset.set.egresos.business.ConfirmacionTransferenciasBusinessImpl">
+		<property name="confirmacionTransferenciasDao" ref="confirmacionTransferenciasDao" />
+	</bean>
+
+	<bean id="confirmacionTransferenciasDao"
+		class="com.webset.set.egresos.dao.impl.ConfirmacionTransferenciasDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="confirmacionCargoCtaBusinessImpl"
+		class="com.webset.set.egresos.business.ConfirmacionCargoCtaBusinessImpl">
+		<property name="confirmacionCargoCtaDao" ref="confirmacionCargoCtaDao" />
+	</bean>
+
+	<bean id="confirmacionCargoCtaDao"
+		class="com.webset.set.egresos.dao.impl.ConfirmacionCargoCtaDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="rentasBusiness" class="com.webset.set.egresos.business.RentasBusinessImpl">
+		<property name="rentasDao" ref="rentasDao" />
+	</bean>
+
+	<bean id="rentasDao" class="com.webset.set.egresos.dao.impl.RentasDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objSeguimientoCPBusinessImpl"
+		class="com.webset.set.egresos.business.SeguimientoCPBusinessImpl">
+		<property name="objSeguimientoCPDao" ref="objSeguimientoCPDao" />
+	</bean>
+
+	<bean id="objSeguimientoCPDao" class="com.webset.set.egresos.dao.impl.SeguimientoCPDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="gestionDeOperacionesDivisasDAO"
+		class="com.webset.set.egresos.dao.impl.GestionDeOperacionesDivisasDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="gestionDeOperacionesDivisasBo"
+		class="com.webset.set.egresos.business.GestionDeOperacionesDivisasBoImpl">
+		<property name="pagosEnSAPBusiness" ref="pagosEnSAPBusiness" />
+		<property name="gestionDeOperacionesDivisasDAO" ref="gestionDeOperacionesDivisasDAO" />
+	</bean>
+
+	<!-- Fin Egresos -->
+
+	<!-- Utilerias -->
+	<bean id="objEquivalenciaBancosBusinessImpl"
+		class="com.webset.set.utilerias.business.impl.EquivalenciaBancosBusinessImpl">
+		<property name="objEquivalenciaBancosDao" ref="objEquivalenciaBancosDao" />
+	</bean>
+
+	<bean id="objEquivalenciaBancosDao"
+		class="com.webset.set.utilerias.dao.impl.EquivalenciaBancosDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objMantenimientoSolicitantesBusinessImpl"
+		class="com.webset.set.utilerias.business.impl.MantenimientoSolicitantesBusinessImpl">
+		<property name="objMantenimientoSolicitantesDao" ref="objMantenimientoSolicitantesDao" />
+	</bean>
+
+	<bean id="objMantenimientoSolicitantesDao"
+		class="com.webset.set.utilerias.dao.impl.MantenimientoSolicitantesDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objMantenimientoSolicitantesFirmantesBusinessImpl"
+		class="com.webset.set.utilerias.business.impl.MantenimientoSolicitantesFirmantesBusinessImpl">
+		<property name="objMantenimientoSolicitantesFirmantesDao"
+			ref="objMantenimientoSolicitantesFirmantesDao" />
+	</bean>
+
+	<bean id="objMantenimientoSolicitantesFirmantesDao"
+		class="com.webset.set.utilerias.dao.impl.MantenimientoSolicitantesFirmantesDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objMapeoDao" class="com.webset.set.utilerias.dao.impl.MapeoDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objMapeoBusinessImpl"
+		class="com.webset.set.utilerias.business.impl.MapeoBusinessImpl">
+		<property name="objMapeoDao" ref="objMapeoDao" />
+	</bean>
+
+	<bean id="objMantenimientoLeyendasBusinessImpl"
+		class="com.webset.set.utilerias.business.impl.MantenimientoLeyendasBusinessImpl">
+		<property name="objMantenimientoLeyendasDao" ref="objMantenimientoLeyendasDao" />
+	</bean>
+
+	<bean id="objMantenimientoLeyendasDao"
+		class="com.webset.set.utilerias.dao.impl.MantenimientoLeyendasDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objMantenimientoTiendasBusinessImpl"
+		class="com.webset.set.utilerias.business.impl.MantenimientoTiendasBusinessImpl">
+		<property name="objMantenimientoTiendasDao" ref="objMantenimientoTiendasDao" />
+	</bean>
+
+	<bean id="objMantenimientoTiendasDao"
+		class="com.webset.set.utilerias.dao.impl.MantenimientoTiendasDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="reglasNegocioBusinessImpl"
+		class="com.webset.set.utilerias.business.impl.ReglasNegocioBusinessImpl">
+		<property name="reglasNegocioDao" ref="reglasNegocioDao" />
+	</bean>
+
+	<bean id="reglasNegocioDao" class="com.webset.set.utilerias.dao.impl.ReglasNegocioDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objMantenimientoChequerasBusinessImpl"
+		class="com.webset.set.utilerias.business.impl.MantenimientoChequerasBusinessImpl">
+		<property name="objMantenimientoChequerasDao" ref="objMantenimientoChequerasDao" />
+	</bean>
+
+	<bean id="objMantenimientoChequerasDao"
+		class="com.webset.set.utilerias.dao.impl.MantenimientoChequerasDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objConfiguracionSolicitudPagoBusinessImpl"
+		class="com.webset.set.utilerias.business.impl.ConfiguracionSolicitudPagoBusinessImpl">
+		<property name="objConfiguracionSolicitudPagoDao" ref="objConfiguracionSolicitudPagoDao" />
+	</bean>
+
+	<bean id="objConfiguracionSolicitudPagoDao"
+		class="com.webset.set.utilerias.dao.impl.ConfiguracionSolicitudPagoDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objMantenimientoBancosBusinessImpl"
+		class="com.webset.set.utilerias.business.impl.MantenimientoBancosBusinessImpl">
+		<property name="objMantenimientoBancosDao" ref="objMantenimientoBancosDao" />
+	</bean>
+
+	<bean id="objMantenimientoBancosDao"
+		class="com.webset.set.utilerias.dao.impl.MantenimientoBancosDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objMantenimientoConceptosBusinessImpl"
+		class="com.webset.set.utilerias.business.impl.MantenimientoConceptosBusinessImpl">
+		<property name="objMantenimientoConceptosDao" ref="objMantenimientoConceptosDao" />
+	</bean>
+
+	<bean id="objMantenimientoConceptosDao"
+		class="com.webset.set.utilerias.dao.impl.MantenimientoConceptosDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objMantenimientoCatalogosBusinessImpl"
+		class="com.webset.set.utilerias.business.impl.MantenimientoCatalogosBusinessImpl">
+		<property name="objMantenimientoCatalogosDao" ref="objMantenimientoCatalogosDao" />
+	</bean>
+
+	<bean id="objMantenimientoCatalogosDao"
+		class="com.webset.set.utilerias.dao.impl.MantenimientoCatalogosDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objMantenimientoValorDivisaBusinessImpl"
+		class="com.webset.set.utilerias.business.impl.MantenimientoValorDivisaBusinessImpl">
+		<property name="objMantenimientoValorDivisaDao" ref="objMantenimientoValorDivisaDao" />
+	</bean>
+
+	<bean id="objMantenimientoValorDivisaDao"
+		class="com.webset.set.utilerias.dao.impl.MantenimientoValorDivisaDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objEquivalenciaEmpresasBusinessImpl"
+		class="com.webset.set.utilerias.business.impl.EquivalenciaEmpresasBusinessImpl">
+		<property name="objEquivalenciaEmpresasDao" ref="objEquivalenciaEmpresasDao" />
+	</bean>
+
+	<bean id="objEquivalenciaEmpresasDao"
+		class="com.webset.set.utilerias.dao.impl.EquivalenciaEmpresasDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objGrupoEmpresasBusinessImpl"
+		class="com.webset.set.utilerias.business.impl.GrupoEmpresasBusinessImpl">
+		<property name="objGrupoEmpresasDao" ref="objGrupoEmpresasDao" />
+	</bean>
+
+	<bean id="objGrupoEmpresasDao" class="com.webset.set.utilerias.dao.impl.GrupoEmpresasDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objCodigosBusinessImpl"
+		class="com.webset.set.utilerias.business.impl.CodigosBusinessImpl">
+		<property name="objCodigosDao" ref="objCodigosDao" />
+	</bean>
+
+	<bean id="objCodigosDao" class="com.webset.set.utilerias.dao.impl.CodigosDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objProcesosGeneralesBusinessImpl"
+		class="com.webset.set.utilerias.business.impl.ProcesosGeneralesBusinessImpl">
+		<property name="objProcesosGeneralesDao" ref="objProcesosGeneralesDao" />
+	</bean>
+
+	<bean id="objProcesosGeneralesDao"
+		class="com.webset.set.utilerias.dao.impl.ProcesosGeneralesDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objSepararPDFImpl" class="com.webset.set.egresos.procesos.SepararPDFImpl">
+		<property name="separarPDFDao" ref="separarPDFDao" />
+	</bean>
+
+	<bean id="separarPDFDao" class="com.webset.set.egresos.dao.impl.SepararPDFDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- Fin Utilerias -->
+
+	<!-- Personas -->
+	<bean id="objConsultaPersonasBusinessImpl"
+		class="com.webset.set.personas.business.ConsultaPersonasBusinessImpl">
+		<property name="objConsultaPersonasDao" ref="objConsultaPersonasDao" />
+		<property name="globalDao" ref="globalDao" />
+	</bean>
+
+	<bean id="objConsultaPersonasDao"
+		class="com.webset.set.personas.dao.impl.ConsultaPersonasDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- Fin Personas -->
+
+	<!-- Seguridad -->
+	<bean id="seguridadUsuarioBusiness"
+		class="com.webset.set.seguridad.business.SeguridadUsuarioBusiness">
+		<property name="seguridadUsuarioDao" ref="seguridadUsuarioDao" />
+	</bean>
+
+	<bean id="seguridadUsuarioDao" class="com.webset.set.seguridad.dao.SeguridadUsuarioDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="segPolizasBusinnes" class="com.webset.set.seguridad.business.SegPolizasBusiness">
+		<property name="segPolizasDao" ref="segPolizasDao" />
+	</bean>
+
+	<bean id="segPolizasDao" class="com.webset.set.seguridad.dao.SegPolizasDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="segFacultadBusiness" class="com.webset.set.seguridad.business.SegFacultadBusiness">
+		<property name="segFacultadDao" ref="segFacultadDao" />
+	</bean>
+
+	<bean id="segFacultadDao" class="com.webset.set.seguridad.dao.SegFacultadDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="segUsuarioBusiness" class="com.webset.set.seguridad.business.SegUsuarioBusiness">
+		<property name="segUsuarioDao" ref="segUsuarioDao" />
+	</bean>
+
+	<bean id="segUsuarioDao" class="com.webset.set.seguridad.dao.SegUsuarioDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="segFacultadComponenteBusiness"
+		class="com.webset.set.seguridad.business.SegFacultadComponenteBusiness">
+		<property name="segFacultadComponenteDao" ref="segFacultadComponenteDao" />
+	</bean>
+
+	<bean id="segFacultadComponenteDao" class="com.webset.set.seguridad.dao.SegFacultadComponenteDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="segPerfilBusiness" class="com.webset.set.seguridad.business.SegPerfilBusiness">
+		<property name="segPerfilDao" ref="segPerfilDao" />
+	</bean>
+
+	<bean id="segPerfilDao" class="com.webset.set.seguridad.dao.SegPerfilDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="segUsuarioPerfilBusiness"
+		class="com.webset.set.seguridad.business.SegUsuarioPerfilBusiness">
+		<property name="segUsuarioPerfilDao" ref="segUsuarioPerfilDao" />
+	</bean>
+
+	<bean id="segUsuarioPerfilDao" class="com.webset.set.seguridad.dao.SegUsuarioPerfilDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="segCatTipoComponenteBusiness"
+		class="com.webset.set.seguridad.business.SegCatTipoComponenteBusiness">
+		<property name="segCatTipoComponenteDao" ref="segCatTipoComponenteDao" />
+	</bean>
+
+	<bean id="segCatTipoComponenteDao" class="com.webset.set.seguridad.dao.SegCatTipoComponenteDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="catAreaBusiness" class="com.webset.set.seguridad.business.CatAreaBusiness">
+		<property name="catAreaDao" ref="catAreaDao" />
+	</bean>
+
+	<bean id="catAreaDao" class="com.webset.set.seguridad.dao.CatAreaDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="catCajaBusiness" class="com.webset.set.seguridad.business.CatCajaBusiness">
+		<property name="catCajaDao" ref="catCajaDao" />
+	</bean>
+
+	<bean id="catCajaDao" class="com.webset.set.seguridad.dao.CatCajaDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="empresaBusiness" class="com.webset.set.seguridad.business.EmpresaBusiness">
+		<property name="empresaDao" ref="empresaDao" />
+	</bean>
+
+	<bean id="empresaDao" class="com.webset.set.seguridad.dao.EmpresaDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="catOrigenMovBusiness" class="com.webset.set.seguridad.business.CatOrigenMovBusiness">
+		<property name="catOrigenMovDao" ref="catOrigenMovDao" />
+	</bean>
+
+	<bean id="catOrigenMovDao" class="com.webset.set.seguridad.dao.CatOrigenMovDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="personaBusiness" class="com.webset.set.seguridad.business.PersonaBusiness">
+		<property name="personaDao" ref="personaDao" />
+	</bean>
+
+	<bean id="personaDao" class="com.webset.set.seguridad.dao.PersonaDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="segComponenteBusiness" class="com.webset.set.seguridad.business.SegComponenteBusiness">
+		<property name="segComponenteDao" ref="segComponenteDao" />
+	</bean>
+
+	<bean id="segComponenteDao" class="com.webset.set.seguridad.dao.SegComponenteDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="segMantenimientoCatalogosBusiness"
+		class="com.webset.set.seguridad.business.SegMantenimientoCatalogosBusiness">
+		<property name="segMantenimientoCatalogosDao" ref="segMantenimientoCatalogosDao" />
+	</bean>
+
+	<bean id="segMantenimientoCatalogosDao"
+		class="com.webset.set.seguridad.dao.SegMantenimientoCatalogosDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="segConfiguracionesSETBusiness"
+		class="com.webset.set.seguridad.business.SegConfiguracionesSETBusiness">
+		<property name="segConfiguracionesSETDao" ref="segConfiguracionesSETDao" />
+	</bean>
+
+	<bean id="segConfiguracionesSETDao" class="com.webset.set.seguridad.dao.SegConfiguracionesSETDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- Fin Seguridad -->
+
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="txManager2"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource2" />
+	</bean>
+
+
+
+	<bean id="envioTransferenciasBusiness"
+		class="com.webset.set.bancaelectronica.business.EnvioTransferenciasBusiness">
+		<property name="envioTransferenciasDao" ref="envioTransferenciasDao" />
+		<property name="segUsuarioPerfilBusiness" ref="segUsuarioPerfilBusiness" /><!-- 
+			Se hace esta referencia para la inyeccion de dos bussines -->
+		<property name="layoutBancomerBusiness" ref="layoutBancomerBusiness" />
+		<property name="layoutAztecaBusiness" ref="layoutAztecaBusiness" />
+		<property name="layoutScotiabankInverlatBusiness" ref="layoutScotiabankInverlatBusiness" />
+		<property name="creacionArchivosBusiness" ref="creacionArchivosBusiness" />
+	</bean>
+
+	<bean id="envioTransferenciasABusiness"
+		class="com.webset.set.bancaelectronica.business.EnvioTransferenciasABusiness">
+		<property name="envioTransferenciasADao" ref="envioTransferenciasADao" />
+		<property name="segUsuarioPerfilBusiness" ref="segUsuarioPerfilBusiness" /><!-- 
+			Se hace esta referencia para la inyeccion de dos bussines -->
+		<property name="layoutBancomerBusiness" ref="layoutBancomerBusiness" />
+		<property name="layoutAztecaBusiness" ref="layoutAztecaBusiness" />
+		<property name="layoutBanorteBusiness" ref="layoutBanorteBusiness" />
+		<property name="layoutScotiabankInverlatBusiness" ref="layoutScotiabankInverlatBusiness" />
+		<property name="creacionArchivosBusiness" ref="creacionArchivosBusiness" />
+	</bean>
+
+	<bean id="layoutAztecaBusiness" class="com.webset.set.layout.business.LayoutAztecaBusiness">
+		<property name="layoutsDao" ref="layoutsDao" />
+		<property name="envioTransferenciasDao" ref="envioTransferenciasDao" />
+	</bean>
+
+	<bean id="layoutBanorteBusiness" class="com.webset.set.layout.business.LayoutBanorteBusiness">
+		<property name="layoutsDao" ref="layoutsDao" />
+		<property name="envioTransferenciasDao" ref="envioTransferenciasDao" />
+	</bean>
+
+	<bean id="layoutScotiabankInverlatBusiness"
+		class="com.webset.set.layout.business.LayoutScotiabankInverlatBusiness">
+		<property name="layoutsDao" ref="layoutsDao" />
+		<property name="envioTransferenciasDao" ref="envioTransferenciasDao" />
+	</bean>
+
+	<!-- Layout -->
+	<bean id="layoutBancomerBusiness" class="com.webset.set.layout.business.LayoutBancomerBusiness">
+		<property name="layoutsDao" ref="layoutsDao" />
+		<property name="envioTransferenciasDao" ref="envioTransferenciasDao" />
+		<property name="envioTransferenciasADao" ref="envioTransferenciasADao" />
+		<property name="creacionArchivosBusiness" ref="creacionArchivosBusiness" />
+	</bean>
+
+	<bean id="creacionArchivosBusiness" class="com.webset.set.layout.business.CreacionArchivosBusiness">
+		<property name="layoutsDao" ref="layoutsDao" />
+		<property name="envioTransferenciasDao" ref="envioTransferenciasDao" />
+	</bean>
+
+	<bean id="layoutProteccionHSBCBusiness"
+		class="com.webset.set.layout.business.LayoutProteccionHSBCBusiness">
+		<property name="impresionDao" ref="impresionDao" />
+	</bean>
+
+	<bean id="reimpresionBusinessImpl"
+		class="com.webset.set.impresion.business.ReimpresionBusinessImpl">
+		<property name="reimpresionDao" ref="reimpresionDao" />
+	</bean>
+
+	<bean id="reimpresionDao" class="com.webset.set.impresion.dao.impl.ReimpresionDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="importarSaldosChequerasBusiness"
+		class="com.webset.set.layout.business.ImportarSaldosChequerasBusiness">
+		<property name="coinversionDao" ref="coinversionDao" />
+	</bean>
+
+	<!-- Banca Electronica -->
+	<bean id="chequeOcurreDao"
+		class="com.webset.set.bancaelectronica.dao.impl.ChequeOcurreDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objMovimientosBEDao"
+		class="com.webset.set.bancaelectronica.dao.impl.MovimientosBEDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objMovimientosBEBusiness"
+		class="com.webset.set.bancaelectronica.business.MovimientosBEBusiness">
+		<property name="objMovimientosBEDao" ref="objMovimientosBEDao" />
+	</bean>
+
+	<bean id="objConsultaOperacionesBEBusiness"
+		class="com.webset.set.bancaelectronica.business.ConsultaOperacionesBEBusiness">
+		<property name="objConsultaOperacionesBEDao" ref="objConsultaOperacionesBEDao" />
+	</bean>
+
+	<bean id="objConsultaOperacionesBEDao"
+		class="com.webset.set.bancaelectronica.dao.impl.ConsultaOperacionesBEDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objBancaBuzones"
+		class="com.webset.set.bancaelectronica.business.BancaBuzonesBusinessImpl">
+		<property name="objBancaBuzonesDao" ref="objBancaBuzonesDao" />
+		<!-- <property name = "objGeneraLayout" ref="objGeneraLayout"/> -->
+	</bean>
+
+	<bean id="objBancaBuzonesDao"
+		class="com.webset.set.bancaelectronica.dao.impl.BancaBuzonesDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="chequeOcurreBusiness"
+		class="com.webset.set.bancaelectronica.business.ChequeOcurreBusiness">
+		<property name="chequeOcurreDao" ref="chequeOcurreDao" />
+		<property name="envioTransferenciasDao" ref="envioTransferenciasDao" />
+		<property name="layoutBancomerBusiness" ref="layoutBancomerBusiness" />
+		<property name="creacionArchivosBusiness" ref="creacionArchivosBusiness" />
+	</bean>
+
+	<bean id="bancaElectronicaBusiness"
+		class="com.webset.set.bancaelectronica.business.BancaElectronicaBusiness">
+		<property name="bancaElectronicaDao" ref="bancaElectronicaDao" />
+	</bean>
+
+	<bean id="movimientosBancaEBusiness"
+		class="com.webset.set.bancaelectronica.business.MovimientosBancaEBusiness">
+		<property name="movimientosBancaEDao" ref="movimientosBancaEDao" />
+	</bean>
+
+	<bean id="administradorArchivosBusiness"
+		class="com.webset.set.bancaelectronica.business.AdministradorArchivosBusiness">
+		<property name="administradorArchivosDao" ref="administradorArchivosDao" />
+	</bean>
+	<bean id="administradorArchivosInterfazBusiness"
+		class="com.webset.set.bancaelectronica.business.AdministradorArchivosInterfazBusiness">
+		<property name="administradorArchivosInterfazDao" ref="administradorArchivosInterfazDao" />
+	</bean>
+
+	<bean id="controlArchivosTransferidosBusiness"
+		class="com.webset.set.bancaelectronica.business.ControlArchivosTransferidosBusiness">
+		<property name="controlArchivosTransferidosDao" ref="controlArchivosTransferidosDao" />
+		<property name="creacionArchivosBusiness" ref="creacionArchivosBusiness" />
+		<property name="layoutBancomerBusiness" ref="layoutBancomerBusiness" />
+		<property name="layoutAztecaBusiness" ref="layoutAztecaBusiness" />
+
+		<!--<property name= "busquedaArchivos" ref="busquedaArchivos"/> -->
+	</bean>
+
+	<bean id="controlArchivosTransferidosABusiness"
+		class="com.webset.set.bancaelectronica.business.ControlArchivosTransferidosABusiness">
+		<property name="controlArchivosTransferidosADao" ref="controlArchivosTransferidosADao" />
+		<property name="layoutAztecaBusiness" ref="layoutAztecaBusiness" />
+		<property name="layoutBancomerBusiness" ref="layoutBancomerBusiness" />
+		<property name="layoutBanorteBusiness" ref="layoutBanorteBusiness" />
+		<property name="layoutScotiabankInverlatBusiness" ref="layoutScotiabankInverlatBusiness" />
+		<property name="creacionArchivosBusiness" ref="creacionArchivosBusiness" />
+	</bean>
+
+	<bean id="objCargaPagosBusinessImpl" class="com.webset.set.interfaz.business.CargaPagosBusinessImpl">
+		<property name="objCargaPagosDao" ref="objCargaPagosDao" />
+		<property name="objGeneraLayout" ref="objGeneraLayout" />
+	</bean>
+
+	<!-- impresion -->
+	<bean id="cartasPorEntregarBusinessImpl"
+		class="com.webset.set.impresion.business.CartasPorEntregarBusinessImpl">
+		<property name="cartasPorEntregarDao" ref="cartasPorEntregarDao" />
+	</bean>
+
+	<bean id="cartasPorEntregarDao"
+		class="com.webset.set.impresion.dao.impl.CartasPorEntregarDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objCartasChequesDao" class="com.webset.set.impresion.dao.impl.CartasChequesDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objCartasChequesBusinessImpl"
+		class="com.webset.set.impresion.business.CartasChequesBusinessImpl">
+		<property name="objCartasChequesDao" ref="objCartasChequesDao" />
+	</bean>
+
+	<bean id="objAsignacionFirmasBusiness"
+		class="com.webset.set.impresion.business.AsignacionFirmasBusinessImpl">
+		<property name="objAsignacionFirmasDao" ref="objAsignacionFirmasDao" />
+	</bean>
+
+	<bean id="objAsignacionFirmasDao"
+		class="com.webset.set.impresion.dao.impl.AsignacionFirmasDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objParametrosCartaDao"
+		class="com.webset.set.impresion.dao.impl.ParametrosCartaDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objParametrosCartaBusinessImpl"
+		class="com.webset.set.impresion.business.ParametrosCartaBusinessImpl">
+		<property name="objParametrosCartaDao" ref="objParametrosCartaDao" />
+	</bean>
+
+	<bean id="chequesPorEntregarBusinessImpl"
+		class="com.webset.set.impresion.business.ChequesPorEntregarBusinessImpl">
+		<property name="chequesPorEntregarDao" ref="chequesPorEntregarDao" />
+	</bean>
+
+	<bean id="chequesPorEntregarDao"
+		class="com.webset.set.impresion.dao.impl.ChequesPorEntregarDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="controlChequesBusinessImpl"
+		class="com.webset.set.impresion.business.ControlChequesBusinessImpl">
+		<property name="controlChequesDao" ref="controlChequesDao" />
+	</bean>
+
+	<bean id="controlChequesDao" class="com.webset.set.impresion.dao.impl.ControlChequesDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="impresionBusinessImpl" class="com.webset.set.impresion.business.ImpresionBusinessImpl">
+		<property name="impresionDao" ref="impresionDao" />
+		<property name="creacionArchivosBusiness" ref="creacionArchivosBusiness" />
+		<property name="layoutProteccionHSBCBusiness" ref="layoutProteccionHSBCBusiness" />
+		<property name="envioTransferenciasDao" ref="envioTransferenciasDao" />
+		<property name="mantenimientosDao" ref="mantenimientosDao" />
+	</bean>
+
+	<bean id="configuracionContinuaBusinessImpl"
+		class="com.webset.set.impresion.business.ConfiguracionContinuaBusinessImpl">
+		<property name="configuracionContinuaDao" ref="configuracionContinuaDao" />
+	</bean>
+
+	<bean id="configuracionContinuaDao"
+		class="com.webset.set.impresion.dao.impl.ConfiguracionContinuaDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="mantenimientosBusinessImpl"
+		class="com.webset.set.impresion.business.MantenimientosBusinessImpl">
+		<property name="mantenimientosDao" ref="mantenimientosDao" />
+	</bean>
+
+	<bean id="impresorasBusinessImpl"
+		class="com.webset.set.impresion.business.ImpresorasBusinessImpl">
+		<property name="impresorasDao" ref="impresorasDao" />
+	</bean>
+
+	<bean id="consultasBusiness" class="com.webset.set.consultas.business.ConsultasBusiness">
+		<property name="consultasDao" ref="consultasDao" />
+		<property name="globalBusiness" ref="globalBusiness" />
+	</bean>
+
+	<bean id="posicionBancariaBusiness"
+		class="com.webset.set.consultas.business.PosicionBancariaBusinessImpl">
+		<property name="posicionBancariaDao" ref="posicionBancariaDao" />
+	</bean>
+
+	<bean id="posicionBancariaDao"
+		class="com.webset.set.consultas.dao.impl.PosicionBancariaDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- Monitor -->
+	<bean id="objMonitorService" class="com.webset.set.monitor.business.MonitorBusinessImpl">
+		<property name="objMonitorDao" ref="objMonitorDao" />
+	</bean>
+	<!-- Termina Monitor -->
+
+	<!-- Ingresos -->
+	<bean id="identificacionIngresosBusinessImpl"
+		class="com.webset.set.ingresos.business.IdentificacionIngresosBusinessImpl">
+		<property name="identificacionIngresosDao" ref="identificacionIngresosDao" />
+	</bean>
+
+	<bean id="identificacionIngresosDao"
+		class="com.webset.set.ingresos.dao.impl.IdentificacionIngresosDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="catBancoBusiness" class="com.webset.set.ingresos.business.CatBancoBusiness">
+		<property name="catBancoDao" ref="catBancoDao" />
+	</bean>
+
+	<bean id="catBancoDao" class="com.webset.set.ingresos.dao.CatBancoDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="importaBancaElectronicaBusiness"
+		class="com.webset.set.bancaelectronica.business.ImportaBancaElectronicaBusiness">
+		<property name="importaBancaElectronicaDao" ref="importaBancaElectronicaDao" />
+	</bean>
+
+	<bean id="traspasosBusiness" class="com.webset.set.traspasos.business.TraspasosBusiness">
+		<property name="traspasosDao" ref="traspasosDao" />
+		<property name="layoutBancomerBusiness" ref="layoutBancomerBusiness" />
+		<property name="layoutAztecaBusiness" ref="layoutAztecaBusiness" />
+		<property name="layoutScotiabankInverlatBusiness" ref="layoutScotiabankInverlatBusiness" />
+		<property name="creacionArchivosBusiness" ref="creacionArchivosBusiness" />
+	</bean>
+
+	<bean id="reportesBusiness" class="com.webset.set.reportes.business.ReportesBusiness">
+		<property name="reportesBancaXmlDao" ref="reportesBancaXmlDao" />
+	</bean>
+
+	<bean id="reportesBancaXmlBusiness"
+		class="com.webset.set.bancaelectronica.business.ReportesBancaXMLBusiness">
+		<property name="reportesBancaXmlDao" ref="reportesBancaXmlDao" />
+	</bean>
+
+	<!-- Global -->
+	<bean id="globalBusiness" class="com.webset.set.global.business.GlobalBusiness">
+		<property name="globalDao" ref="globalDao" />
+	</bean>
+	<!-- End Global -->
+
+	<!--Coinversion -->
+	<bean id="coinversionBusinessImpl"
+		class="com.webset.set.coinversion.business.CoinversionBusinessImpl">
+		<property name="coinversionDao" ref="coinversionDao" />
+		<property name="importarSaldosChequerasBusiness" ref="importarSaldosChequerasBusiness" />
+	</bean>
+	<!-- End Coinversion -->
+
+	<!--Inversiones -->
+	<bean id="inversionesBusinessImpl"
+		class="com.webset.set.inversiones.business.InversionesBusinessImpl">
+		<property name="inversionesDao" ref="inversionesDao" />
+		<property name="repInversionesDao" ref="repInversionesDao" />
+	</bean>
+
+	<bean id="inversionesValoresBusinessImpl"
+		class="com.webset.set.inversiones.business.InversionesValoresBusinessImpl">
+		<property name="objInversionesValoresDao" ref="objInversionesValoresDao" />
+	</bean>
+
+	<bean id="MantenimientoDePapelBusinessImpl"
+		class="com.webset.set.inversiones.business.MantenimientoDePapelBusinessImpl">
+		<property name="mantenimientoDePapelDao" ref="mantenimientoDePapelDao" />
+	</bean>
+
+	<bean id="barridoInversionBusinessImpl"
+		class="com.webset.set.inversiones.business.BarridoInversionBusinessImpl">
+		<property name="barridoInversionDao" ref="barridoInversionDao" />
+		<property name="layoutBancomerBusiness" ref="layoutBancomerBusiness" />
+		<property name="creacionArchivosBusiness" ref="creacionArchivosBusiness" />
+	</bean>
+
+	<bean id="inversionesComunBusinessImpl"
+		class="com.webset.set.inversiones.business.InversionesComunBusinessImpl">
+		<property name="inversionesComunDao" ref="inversionesComunDao" />
+	</bean>
+	<bean id="cotizacionesBusinessImpl"
+		class="com.webset.set.inversiones.business.CotizacionesBusinessImpl">
+		<property name="cotizacionesDao" ref="cotizacionesDao" />
+	</bean>
+	<bean id="repInversionesBusinessImpl"
+		class="com.webset.set.inversiones.business.RepInversionesBusinessImpl">
+		<property name="repInversionesDao" ref="repInversionesDao" />
+	</bean>
+	<!-- End Inversiones -->
+
+	<!-- reportes -->
+	<bean id="reportesBusinessImpl" class="com.webset.set.reportes.business.ReportesBusinessImpl">
+		<property name="reportesDao" ref="reportesDao" />
+	</bean>
+	<!-- End Reportes -->
+
+	<!--Caja -->
+	<bean id="cajaBusinessImpl" class="com.webset.set.caja.business.CajaBusinessImpl">
+		<property name="cajaDao" ref="cajaDao" />
+	</bean>
+	<!-- End Caja -->
+
+	<!--BUSINESS INIT CASH FLOW -->
+	<bean id="cashFlowBusiness"
+		class="com.webset.set.cashflow.business.CashFlowBusinessImplements">
+		<property name="cashFlowDao" ref="cashFlowDao" />
+	</bean>
+
+	<!--ConciliacionBancoSet -->
+	<bean id="conciliacionBancoSetBusinessImpl"
+		class="com.webset.set.conciliacionbancoset.business.ConciliacionBancoSetBusinessImpl">
+		<property name="conciliacionDao" ref="conciliacionDao" />
+		<property name="creacionArchivosBusiness" ref="creacionArchivosBusiness" />
+		<property name="globalBusiness" ref="globalBusiness" />
+	</bean>
+	<!-- End ConciliacionBancoSet -->
+
+	<!--Prestamos Interempresas -->
+	<bean id="prestamosInterempresasBusinessImpl"
+		class="com.webset.set.prestamosinterempresas.business.PrestamosInterempresasBusinessImpl">
+		<property name="prestamosInterempresasDao" ref="prestamosInterempresasDao" />
+	</bean>
+	<!-- End Prestamos Interempresas -->
+
+	<!-- Flujos <bean id="posicionBancariaBusinessImpl" class="com.webset.set.flujos.business.PosicionBancariaBusinessImpl"> 
+		<property name="posicionBancariaDao" ref="posicionBancariaDao"/> </bean> -->
+
+	<bean id="cashFlowNBusiness" class="com.webset.set.flujos.business.CashFlowNBusiness">
+		<property name="cashFlowNDao" ref="cashFlowNDao" />
+	</bean>
+	<!-- Flujos -->
+
+	<!-- Exportador -->
+	<bean id="objExportacionBusinessImpl"
+		class="com.webset.set.interfaz.business.ExportacionBusinessImpl">
+		<property name="objExportacionDao" ref="objExportacionDao" />
+		<property name="exportadorClass" ref="exportadorClass" />
+	</bean>
+
+	<bean id="exportadorClass" class="com.webset.set.interfaz.business.ExportadorAgrupado">
+		<property name="objExportacionDao" ref="objExportacionDao" />
+	</bean>
+
+	<!--DAOS INIT CASH FLOW -->
+	<bean id="cashFlowDao" class="com.webset.set.cashflow.dao.CashFlowDaoImplements">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!--DAOS END CASH FLOW -->
+
+	<!-- Layout -->
+	<bean id="layoutsDao" class="com.webset.set.layout.dao.LayoutsDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- Banca Electronica -->
+	<bean id="bancaElectronicaDao" class="com.webset.set.bancaelectronica.dao.BancaElectronicaDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="movimientosBancaEDao"
+		class="com.webset.set.bancaelectronica.dao.MovimientosBancaEDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="administradorArchivosDao"
+		class="com.webset.set.bancaelectronica.dao.AdministradorArchivosDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="administradorArchivosInterfazDao"
+		class="com.webset.set.bancaelectronica.dao.AdministradorArchivosInterfazDao">
+		<property name="dataSource" ref="dataSource2" />
+	</bean>
+
+	<bean id="envioTransferenciasDao"
+		class="com.webset.set.bancaelectronica.dao.EnvioTransferenciasDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="envioTransferenciasADao"
+		class="com.webset.set.bancaelectronica.dao.EnvioTransferenciasADao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="reportesBancaXmlDao" class="com.webset.set.bancaelectronica.dao.ReportesBancaXMLDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="controlArchivosTransferidosDao"
+		class="com.webset.set.bancaelectronica.dao.impl.ControlArchivosTransferidosDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="controlArchivosTransferidosADao"
+		class="com.webset.set.bancaelectronica.dao.impl.ControlArchivosTrasferidosADaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="consultasDao" class="com.webset.set.consultas.dao.ConsultasDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="importaBancaElectronicaDao"
+		class="com.webset.set.bancaelectronica.dao.ImportaBancaElectronicaDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="traspasosDao" class="com.webset.set.traspasos.dao.TraspasosDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- Impresion -->
+	<bean id="objChequesTransitoBusiness"
+		class="com.webset.set.impresion.business.ChequesTransitoBusinessImpl">
+		<property name="objChequesTransitoDao" ref="objChequesTransitoDao" />
+	</bean>
+
+	<bean id="objChequesTransitoDao"
+		class="com.webset.set.impresion.dao.impl.ChequesTransitoDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="impresionDao" class="com.webset.set.impresion.dao.impl.ImpresionDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="mantenimientosDao" class="com.webset.set.impresion.dao.impl.MantenimientosDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="impresorasDao" class="com.webset.set.impresion.dao.impl.ImpresorasDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- Interfases -->
+	<bean id="objGeneraLayout" class="com.webset.set.interfaz.business.GeneraLayoutH2H">
+		<!--Conexion a la base -->
+		<property name="objCargaPagosDao" ref="objCargaPagosDao" />
+	</bean>
+	<!-- Nuevo bean de interfaces -->
+
+	<bean id="exportacionPolizasBusiness"
+		class="com.webset.set.interfaz.business.ExportacionPolizasBusiness">
+		<property name="exportacionPolizasDao" ref="exportacionPolizasDao" />
+	</bean>
+
+	<bean id="exportacionPolizasDao"
+		class="com.webset.set.interfaz.dao.impl.ExportacionPolizasDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- fin bean de interfaces -->
+
+
+	<bean id="objCargaPagosDao" class="com.webset.set.interfaz.dao.impl.CargaPagosDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- Monitor -->
+	<bean id="objMonitorDao" class="com.webset.set.monitor.dao.MonitorDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- Termina Monitor -->
+
+	<!-- En Interfaz -->
+	<!-- Global -->
+	<bean id="globalDao" class="com.webset.set.global.dao.GlobalDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- End Global -->
+
+	<!-- Coinversion -->
+	<bean id="coinversionDao" class="com.webset.set.coinversion.dao.impl.CoinversionDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- End Coinversion -->
+
+	<!-- Inversiones -->
+	<bean id="inversionesDao" class="com.webset.set.inversiones.dao.impl.InversionesDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="objInversionesValoresDao"
+		class="com.webset.set.inversiones.dao.impl.InversionesValoresDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="mantenimientoDePapelDao"
+		class="com.webset.set.inversiones.dao.impl.MantenimientoDePapelDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="barridoInversionDao"
+		class="com.webset.set.inversiones.dao.impl.BarridoInversionDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="inversionesComunDao"
+		class="com.webset.set.inversiones.dao.impl.InversionesComunDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="cotizacionesDao" class="com.webset.set.inversiones.dao.impl.CotizacionesDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="repInversionesDao"
+		class="com.webset.set.inversiones.dao.impl.RepInversionesDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- End Inversiones -->
+
+	<!-- Reportes -->
+	<bean id="reportesDao" class="com.webset.set.reportes.dao.impl.ReportesDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- End Reportes -->
+
+	<!-- Caja -->
+	<bean id="cajaDao" class="com.webset.set.caja.dao.impl.CajaDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- End Caja -->
+
+	<!-- ConciliacionBancoSet -->
+	<bean id="conciliacionDao"
+		class="com.webset.set.conciliacionbancoset.dao.impl.ConciliacionBancoSetDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- End ConciliacionBancoSet -->
+
+	<bean id="mantenimientoDeRubrosBusinessImpl"
+		class="com.webset.set.flujos.business.MantenimientoDeRubrosBusinessImpl">
+		<property name="mantenimientoDeRubrosDao" ref="mantenimientoDeRubrosDao" />
+	</bean>
+	<bean id="mantenimientoDeRubrosDao"
+		class="com.webset.set.flujos.dao.impl.MantenimientoDeRubrosDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="barridosFondeosBusinessImpl"
+		class="com.webset.set.barridosfondeos.business.BarridosFondeosBusinessImpl">
+		<property name="barridosFondeosDao" ref="barridosFondeosDao" />
+	</bean>
+
+	<bean id="barridosFondeosRepBusinessImpl"
+		class="com.webset.set.barridosfondeos.business.BarridosFondeosRepBusinessImpl">
+		<property name="barridosFondeosDao" ref="barridosFondeosDao" />
+	</bean>
+
+	<bean id="barridosFondeosDao"
+		class="com.webset.set.barridosfondeos.dao.impl.BarridosFondeosDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- PrestamosInterempresas -->
+	<bean id="prestamosInterempresasDao"
+		class="com.webset.set.prestamosinterempresas.dao.impl.PrestamosInterempresasDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- End PrestamosInterempresas -->
+
+	<!-- Flujos <bean id="posicionBancariaDao" class="com.webset.set.flujos.dao.impl.PosicionBancariaDaoImpl"> 
+		<property name="dataSource" ref="dataSource" /> </bean> -->
+
+	<bean id="cashFlowNDao" class="com.webset.set.flujos.dao.impl.CashFlowNDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- End Flujos -->
+
+	<!-- Exportador -->
+	<bean id="objExportacionDao" class="com.webset.set.interfaz.dao.impl.ExportacionDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- Exportador -->
+
+	<!-- Derivados -->
+	<bean id="forwardsBusinessImpl" class="com.webset.set.derivados.business.ForwardsBusinessImpl">
+		<property name="forwardsDao" ref="forwardsDao" />
+	</bean>
+
+	<bean id="forwardsDao" class="com.webset.set.derivados.dao.impl.ForwardsDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- Fin Derivados -->
+
+	<!-- Captura estado de cuenta -->
+	<bean id="objCapturaEstadoCuentaBusinessImpl"
+		class="com.webset.set.bancaelectronica.business.CapturaEstadoCuentaBusinessImpl">
+		<property name="objCapturaEstadoCuentaDao" ref="objCapturaEstadoCuentaDao" />
+		<property name="globalDao" ref="globalDao" />
+	</bean>
+	<bean id="objCapturaEstadoCuentaDao"
+		class="com.webset.set.bancaelectronica.dao.impl.CapturaEstadoCuentaDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- Fin Captura estado de cuenta -->
+
+
+
+	<!-- Conexi?n a BBDD para el monitor de tesorer?a -->
+	<bean id="monitorTesoreriaDao" class="com.webset.set.monitor.dao.MonitorDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- Fin conexiones monitor de tesorer?a -->
+
+	<!--<bean id="importaProv" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"> 
+		<property name="targetObject" ref="objCargaPagosBusinessImpl" /> <property 
+		name="targetMethod" value="importaProveedores" /> <property name="concurrent" 
+		value="false" /> </bean> -->
+
+	<!--<bean id="exportador" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"> 
+		<property name="targetObject" ref="objExportacionBusinessImpl" /> <property 
+		name="targetMethod" value="exportaRegistrosAuto" /> <property name="concurrent" 
+		value="false" /> </bean> -->
+
+	<bean id="cierreDia"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="objProcesosGeneralesBusinessImpl" />
+		<property name="targetMethod" value="correCierreAuto" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="insertaIndicadorBancario"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="objProcesosGeneralesBusinessImpl" />
+		<property name="targetMethod" value="correIndicadorBancario" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+
+	<bean id="importador"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="objProcesosGeneralesBusinessImpl" />
+		<property name="targetMethod" value="importador" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="bloqueaUsuarios"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="objProcesosGeneralesBusinessImpl" />
+		<property name="targetMethod" value="bloqueaUsuarios" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="contabilidadElectronica"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="objProcesosGeneralesBusinessImpl" />
+		<property name="targetMethod" value="mandarAContabilidadElectronica" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="lecturaPDF"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="objSepararPDFImpl" />
+		<property name="targetMethod" value="procesoSepararPdf" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<!--bean> prueba de lectura de estados de cuenta en automatico</bean -->
+	<!--<bean id="impEdosCtaAut" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"> 
+		<property name="targetObject" ref="administradorArchivosBusiness" /> <property 
+		name="targetMethod" value="leeEdosCtaAuto" /> <property name="concurrent" 
+		value="false" /> </bean> -->
+	<!--bean> *************************************************************************************</bean -->
+
+	<!--<bean id="cronImportaProv" class="org.springframework.scheduling.quartz.CronTriggerBean"> 
+		<property name="jobDetail" ref="importaProv"/> <property name="cronExpression" 
+		value="0 00 10 * * ?" /> </bean> -->
+
+	<!--<bean id="cronExportador" class="org.springframework.scheduling.quartz.CronTriggerBean"> 
+		<property name="jobDetail" ref="exportador"/> <property name="cronExpression" 
+		value="0 00 19 * * ?" /> </bean> -->
+
+	<bean id="cronCierreDia" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="cierreDia" />
+		<property name="cronExpression" value="00 */30 01-06 ? * *" />
+	</bean>
+
+	<bean id="cronInsertaIndicadoresBancarios" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="insertaIndicadorBancario" />
+		<property name="cronExpression" value="0 53 09 ? * *" />
+	</bean>
+
+	<bean id="cronImportador" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="importador" />
+		<property name="cronExpression" value="0 */10 * ? * *" />
+	</bean>
+
+	<bean id="cronBloqueaUsuarios" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="bloqueaUsuarios" />
+		<property name="cronExpression" value="0 00 00 ? * MON-FRI" />
+	</bean>
+
+	<bean id="cronContabilidadElectronica" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="contabilidadElectronica" />
+		<property name="cronExpression" value="0 59 23 ? * *" />
+	</bean>
+
+	<bean id="cronLecturaPDF" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="lecturaPDF" />
+		<property name="cronExpression" value="0 0/10 9-19 ? * MON-FRI *" />
+	</bean>
+
+	<bean id="lecturaArchivosBanamex"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="administradorArchivosBusiness" />
+		<property name="targetMethod" value="leerCitibankDlsProcedimientoBanamex" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="cronLecturaArchivosBanamex" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="lecturaArchivosBanamex" />
+		<property name="cronExpression" value="0 0/20 8-23 ? * MON-SAT *" />
+	</bean>
+
+	<bean id="datosMantenimientoMovimiento"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="administradorArchivosInterfazBusiness" />
+		<property name="targetMethod" value="datosMantenimientoMovimiento" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="cronDatosMantenimientoMovimiento" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="datosMantenimientoMovimiento" />
+		<property name="cronExpression" value="0 0/15 8-23 ? * MON-SAT *" />
+	</bean>
+	
+	<!--<bean id="importaBancaE" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="importaBancaElectronicaBusiness"/>
+		<property name ="targetMethod" value="importaBancaElectronica" />
+		<property name="concurrent" value="false"/>	
+	</bean>-->
+
+	<!-- <bean id="cronImportaBancaElectronica" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="importaBancaE"/>
+		<property name="cronExpression" value="0 05/15 8-23 ? * MON-SAT *" />
+	</bean>-->
+
+
+	<!--<bean id="cronImpEdosCtaAut" class="org.springframework.scheduling.quartz.CronTriggerBean"> 
+		<property name="jobDetail" ref="impEdosCtaAut" /> <property name="cronExpression" 
+		value="0 45 18 ? * MON-FRI" /> </bean> -->
+
+	<!--<bean id="cronBancaBuzones" class="org.springframework.scheduling.quartz.CronTriggerBean"> 
+		<property name="jobDetail" ref="bancaBuzones"/> <property name="cronExpression" 
+		value="0 */20 * ? * MON-FRI" /> </bean> -->
+
+	<!--<bean id="bancaBuzones" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"> 
+		<property name="targetObject" ref="objBancaBuzones" /> <property name="targetMethod" 
+		value="leerArchivosBanca" /> <property name="concurrent" value="false" /> 
+		</bean> -->
+
+	<bean id="objCorreo"
+		class="com.webset.set.utilerias.business.impl.CorreoBusinessImpl">
+		<property name="objCorreoDao" ref="objCorreoDao" />
+	</bean>
+
+	<bean id="objCorreoDao" class="com.webset.set.utilerias.dao.impl.CorreoDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="cronEnviarCorreo" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="enviarCorreo" />
+		<property name="cronExpression" value="0 0/5 8-20 ? * MON-FRI" />
+	</bean>
+
+	<bean id="enviarCorreo"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="objCorreo" />
+		<property name="targetMethod" value="enviarCorreo" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="vencimientoFinanciamientoC"
+		class="com.webset.set.financiamiento.business.VencimientoFinanciamientoCBusinessImpl">
+		<property name="vencimientoFinanciamientoCDao" ref="vencimientoFinanciamientoCDao" />
+	</bean>
+
+	<bean id="vencimientoFinanciamientoDao"
+		class="com.webset.set.financiamiento.dao.impl.VencimientoFinanciamientoCDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="cronEnviarCorreoVencimientos" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="enviarCorreoVencimientos" />
+		<property name="cronExpression" value="0 0 10 ? * MON *" />
+	</bean>
+
+	<bean id="enviarCorreoVencimientos"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="vencimientoFinanciamientoC" />
+		<property name="targetMethod" value="consultarConfiguraSetenviarCorreoVencimientos" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="setScheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<!-- <ref bean="cronCierreDia" /> -->
+				<!-- <ref bean="cronBloqueaUsuarios" /> --> <!-- Bloquea usuarios con 90 o mas dias sin loguearse -->
+				<!-- <ref bean="cronInsertaIndicadoresBancarios" />  -->
+				<!--<ref bean="cronContabilidadElectronica"/> -->
+				<!--<ref bean="cronImportador"/> -->
+				<!--<ref bean="cronImportaProv"/> -->
+				<!--<ref bean="cronExportador"/> -->
+				<!--<ref bean="cronImpEdosCtaAut"/> -->
+				<!--<ref bean="cronBancaBuzones"/> -->
+			 	<ref bean="cronEnviarCorreo"/> 
+			 	<ref bean="cronEnviarCorreoVencimientos"/>
+			 	<ref bean="cronLecturaArchivosBanamex" />
+				<ref bean="cronDatosMantenimientoMovimiento" />
+			  	<ref bean="cronLecturaPDF"/> 
+				<!--<ref bean="cronImportaBancaElectronica"/>-->
+			</list>
+		</property>
+	</bean>
+	<!-- Cadenas de conexion producción <bean class="org.apache.commons.dbcp.BasicDataSource" 
+		id="dataSource" destroy-method="close"> <property name="driverClassName" 
+		value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/> <property name="url" 
+		value="jdbc:sqlserver://DALTON-DOM;database=set_dalton"/> <property name="username" 
+		value="webset_dbo"/> <property name="password" value="P3licula"/> </bean> -->
+
+
+	<!-- Cadenas de conexion
+	 <bean class="org.apache.commons.dbcp.BasicDataSource" 
+		id="dataSource" destroy-method="close"> <property name="driverClassName" 
+		value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/> <property name="url" 
+		value="jdbc:sqlserver://DALTON-WBETEST;database=set_dalton"/> <property name="username" 
+		value="sa"/> <property name="password" value="Gu4rd4nd0d4t0s!"/> </bean> -->
+
+	<!-- CONEXIÓN LOCAL--> 
+	<bean id="dataSource" destroy-method="close"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+		<property name="url" value="jdbc:sqlserver://LAPTOP-0ULR55FH\SQLEXPRESS:1500;database=set_dalton_05122017" />
+		<property name="username" value="usrnetroset002" />
+		<property name="password" value="W3bs3T#32*" />
+	</bean>
+	
+	<!-- CONEXIÓN INTERFAZ DALTON ALEJANDRA VELAZQUEZ SANCHEZ -->
+	<bean id="dataSource2" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+		<property name="url"
+			value="jdbc:sqlserver://AVELAZQUEZ\MSSQLSERVER2:1500;database=Set_interfaces" />
+		<property name="username" value="webset_consultas" />
+		<property name="password" value="P0mpell4#v0v0" />
+	</bean>  
+	
+
+</beans>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-02-01T09:53:48 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteConceptos" pageWidth="800" pageHeight="842" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="80b674f0-706b-4b6d-a063-8a91a9fbc4b4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<field name="desc_banco" class="java.lang.String"/>
+	<field name="desc_concepto" class="java.lang.String"/>
+	<field name="concepto_set" class="java.lang.String"/>
+	<field name="b_salvo_buen_cobro" class="java.lang.String"/>
+	<field name="b_rechazo" class="java.lang.String"/>
+	<field name="id_cve_leyenda" class="java.lang.String"/>
+	<field name="cargo_abono" class="java.lang.String"/>
+	<title>
+		<band height="80" splitType="Stretch">
+			<image>
+				<reportElement x="15" y="1" width="58" height="40" uuid="c0c1444b-9672-47a8-8dc1-e3e143176038"/>
+				<imageExpression><![CDATA["..//..//img//logo_set.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="685" y="1" width="58" height="40" uuid="0a7c1e1b-236b-43cb-a632-39200be1999c"/>
+				<imageExpression><![CDATA["..//..//img//empresas//logoreporte.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="210" y="6" width="340" height="33" forecolor="#B2C8FF" uuid="62bb8ef4-9792-4f9c-ac55-5243e5d82d7d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Conceptos de Banca Electronica]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="665" y="43" width="100" height="30" uuid="2ce3672f-7816-4c54-93e3-6fe565270b58"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="41" width="151" height="21" uuid="acab7462-fa8c-48a3-9bd0-2c368867c888"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{desc_banco}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="765" height="16" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="8db29e02-b6de-4bc2-8992-1f2ebdba39d6"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="4" y="1" width="88" height="14" uuid="6a2c987e-e902-46ea-8cf4-5d64ff0db66b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Concepto Banco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="145" y="1" width="101" height="14" uuid="386b4421-789d-449c-9c46-319d8365a7a5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Concepto Set]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="1" width="69" height="14" uuid="c3bcb31f-91b9-4028-b960-a98d073cadf1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[SBC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="412" y="2" width="69" height="14" uuid="bb5933bc-df09-434e-beb4-bb8370c975cf"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Cargo Abono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="508" y="2" width="69" height="14" uuid="a4442f3d-d92d-476a-8870-2f2019af62c4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Rechazado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="605" y="1" width="69" height="14" uuid="3ff8cb83-de88-42e9-96c7-d0c51ad165fd"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Leyenda]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="10" splitType="Stretch">
+			<textField>
+				<reportElement x="4" y="-17" width="116" height="12" uuid="316525eb-ea15-4a04-88c3-f74f9e8d4bd4"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+					<paragraph tabStopWidth="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{desc_concepto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="145" y="-17" width="116" height="12" uuid="9052a960-e63c-492a-84de-d311bae5567a"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{concepto_set}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="-17" width="80" height="12" uuid="c015f641-2b70-4282-b7bd-186ca5d28e26"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{b_salvo_buen_cobro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="412" y="-17" width="80" height="12" uuid="b49e28c2-0152-4092-82ad-285e721c9753"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cargo_abono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="508" y="-17" width="80" height="12" uuid="2923e8e5-fb70-42fc-9d5a-ea81f118ff3a"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{b_rechazo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="605" y="-17" width="160" height="12" uuid="e72dc7cf-0935-4b24-84aa-3cd1ad8a9d1a"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_cve_leyenda}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="699" y="0" width="27" height="20" uuid="7f6f4cf3-57b1-4c25-8879-20f63ad02edd"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="732" y="0" width="40" height="20" uuid="9810bb7e-3cb0-4922-b176-5ec442e7a8e1"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

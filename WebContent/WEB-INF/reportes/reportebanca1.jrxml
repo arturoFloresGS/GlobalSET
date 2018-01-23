@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="reporteBancaE" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="titulo" class="java.lang.String"/>
+	<queryString language="xPath">
+		<![CDATA[]]>
+	</queryString>
+	<field name="desc_observacion" class="java.lang.String"/>
+	<field name="nom_empresa" class="java.lang.String"/>
+	<field name="no_empresa" class="java.lang.String"/>
+	<field name="id_banco" class="java.lang.String"/>
+	<field name="secuencia" class="java.lang.String"/>
+	<field name="desc_banco" class="java.lang.String"/>
+	<field name="id_chequera" class="java.lang.String"/>
+	<field name="fec_valor" class="java.lang.String"/>
+	<field name="sucursal" class="java.lang.String"/>
+	<field name="folio_banco" class="java.lang.String"/>
+	<field name="referencia" class="java.lang.String"/>
+	<field name="id_divisa" class="java.lang.String"/>
+	<field name="importe" class="java.lang.String"/>
+	<field name="concepto_set" class="java.lang.String"/>
+	<field name="observacion" class="java.lang.String"/>
+	<field name="cargo_abono" class="java.lang.String"/>
+	<field name="importe_ca" class="java.lang.String"/>
+	<field name="no_folio_det" class="java.lang.String"/>
+	<field name="ejecutado" class="java.lang.String"/>
+	<field name="fec_alta" class="java.lang.String"/>
+	<field name="b_trasp_banco" class="java.lang.String"/>
+	<field name="b_trasp_conta" class="java.lang.String"/>
+	<variable name="totalMN" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[($F{cargo_abono}.trim().equals("I") && $F{id_divisa}.trim().equals("MN"))?Double.valueOf($F{importe}):
+($F{cargo_abono}.trim().equals("E") && $F{id_divisa}.trim().equals("MN"))?Double.valueOf((double)(Double.parseDouble($F{importe})* -1)):
+(Double.valueOf(0))]]></variableExpression>
+	</variable>
+	<variable name="totalDLS" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[($F{cargo_abono}.trim().equals("I") && $F{id_divisa}.trim().equals("DLS"))?Double.valueOf($F{importe}):
+($F{cargo_abono}.trim().equals("E") && $F{id_divisa}.trim().equals("DLS"))?Double.valueOf((double)(Double.parseDouble($F{importe})* -1)):
+(Double.valueOf(0))]]></variableExpression>
+	</variable>
+	<variable name="subtotal" class="java.lang.Double" resetType="Group" resetGroup="sumaImporte" calculation="Sum">
+		<variableExpression><![CDATA[($F{cargo_abono}.trim().equals("I"))?Double.valueOf($F{importe}):
+Double.valueOf((double)(Double.parseDouble($F{importe})* -1))]]></variableExpression>
+	</variable>
+	<variable name="totalGral" class="java.lang.Double"/>
+	<group name="sumaImporte">
+		<groupExpression><![CDATA[$F{id_chequera}.trim()]]></groupExpression>
+		<groupHeader>
+			<band height="25">
+				<rectangle>
+					<reportElement x="2" y="4" width="376" height="15" forecolor="#000000" backcolor="#D8E0E9"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</rectangle>
+				<textField isBlankWhenNull="true" hyperlinkType="None">
+					<reportElement mode="Transparent" x="5" y="8" width="148" height="10" backcolor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true" isStrikeThrough="false" isPdfEmbedded="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{nom_empresa}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true" hyperlinkType="None">
+					<reportElement x="153" y="8" width="100" height="10"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="7"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{desc_banco}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true" hyperlinkType="None">
+					<reportElement x="270" y="8" width="100" height="10"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="7"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{id_chequera}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="24">
+				<rectangle>
+					<reportElement x="251" y="1" width="127" height="15" forecolor="#FFFFFF" backcolor="#D8E0E9"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="251" y="1" width="25" height="15" forecolor="#000066"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true" isUnderline="false"/>
+					</textElement>
+					<text><![CDATA[Total:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="34" y="1" width="52" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="6"/>
+					</textElement>
+					<text><![CDATA[Movimientos]]></text>
+				</staticText>
+				<textField hyperlinkType="None">
+					<reportElement x="12" y="1" width="22" height="20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="6"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Integer"><![CDATA[$V{sumaImporte_COUNT}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true" hyperlinkType="None">
+					<reportElement x="276" y="1" width="97" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="7"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{subtotal}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="36">
+			<image hyperlinkType="None">
+				<reportElement x="15" y="1" width="58" height="20"/>
+				<imageExpression class="java.lang.String"><![CDATA["..//..//img//logo_set.jpg"]]></imageExpression>
+			</image>
+			<image hyperlinkType="None">
+				<reportElement x="485" y="1" width="58" height="20"/>
+				<imageExpression class="java.lang.String"><![CDATA["..//..//img//empresas//logoreporte.png"]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="117" y="5" width="331" height="20" forecolor="#B2C8FF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{titulo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="22">
+			<staticText>
+				<reportElement x="350" y="1" width="180" height="20" forecolor="#B2C8FF"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MOVIMIENTOS DEL BANCO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<staticText>
+				<reportElement x="1" y="4" width="31" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="4" width="31" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Divisa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="4" width="43" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Sucursal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="106" y="4" width="47" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Folio Banco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="4" width="63" height="15" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Referencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="216" y="4" width="40" height="15" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Importe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="256" y="4" width="15" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[I/E]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="4" width="45" height="15" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Concepto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="364" y="4" width="40" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Folio SET]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="403" y="4" width="45" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Ejecutado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="4" width="51" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[Observacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="447" y="4" width="42" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[Fecha ImportaciÃ³n]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="488" y="4" width="28" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[Con. Banco]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="2" width="544" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="19" width="544" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="515" y="4" width="28" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[Con. Conta]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<rectangle>
+				<reportElement x="1" y="0" width="550" height="20" forecolor="#FFFFFF" backcolor="#FFFFFF">
+					<printWhenExpression><![CDATA[Boolean.valueOf($V{REPORT_COUNT}.intValue()%2 == 0)]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="0" width="550" height="20" forecolor="#FFFFFF" backcolor="#FFFFFF">
+					<printWhenExpression><![CDATA[Boolean.valueOf($V{REPORT_COUNT}.intValue()%2 == 1)]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="2" y="0" width="32" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fec_valor}.substring(0,10)]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="32" y="0" width="31" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{id_divisa}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="63" y="0" width="43" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sucursal}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="106" y="0" width="47" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{folio_banco}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="153" y="0" width="63" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{referencia}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="216" y="0" width="40" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{importe}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="256" y="0" width="15" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cargo_abono}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="271" y="0" width="44" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{concepto_set}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="367" y="0" width="40" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{no_folio_det}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="407" y="0" width="45" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ejecutado}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="316" y="0" width="49" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{observacion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="452" y="0" width="37" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fec_alta}.substring(0,10)]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="488" y="0" width="28" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{b_trasp_banco}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="516" y="1" width="27" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{b_trasp_conta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="21">
+			<printWhenExpression><![CDATA[Boolean.valueOf($V{totalGral}.compareTo( Double.valueOf(0.0) ) > 0)]]></printWhenExpression>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="27">
+			<textField hyperlinkType="None">
+				<reportElement x="469" y="2" width="20" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" hyperlinkType="None">
+				<reportElement x="489" y="2" width="40" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="24">
+			<rectangle>
+				<reportElement x="86" y="4" width="402" height="20" forecolor="#FFFFFF" backcolor="#D8E0E9"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="95" y="4" width="95" height="20" forecolor="#000066"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Total General MN:]]></text>
+			</staticText>
+			<textField pattern="#,##0.00" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="187" y="4" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totalMN}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="286" y="4" width="95" height="20" forecolor="#000066"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Total General DLS:]]></text>
+			</staticText>
+			<textField pattern="#,##0.00" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="382" y="4" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totalDLS}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

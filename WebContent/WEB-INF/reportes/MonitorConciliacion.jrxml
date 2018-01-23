@@ -1,0 +1,998 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteDetectadosyPendientes" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc469476-c279-47aa-9b7c-c4a6c6baab89">
+	<property name="ireport.zoom" value="1.1269722013523664"/>
+	<property name="ireport.x" value="13"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="descEmpresa" class="java.lang.String"/>
+	<parameter name="estatus" class="java.lang.String"/>
+	<parameter name="subtitulo" class="java.lang.String"/>
+	<parameter name="nombreEmpresa" class="java.lang.String"/>
+	<field name="txtCantCargoMovDiaSET" class="java.lang.String"/>
+	<field name="txtImpCargoMovDiaSET" class="java.lang.String"/>
+	<field name="txtCantAbonoMovDiaSET" class="java.lang.String"/>
+	<field name="txtImpAbonoMovDiaSET" class="java.lang.String"/>
+	<field name="txtCantCargoConsAutomSET" class="java.lang.String"/>
+	<field name="txtImpCargoConsAutomSET" class="java.lang.String"/>
+	<field name="txtCantAbonoConsAutomSET" class="java.lang.String"/>
+	<field name="txtImpAbonoConsAutomSET" class="java.lang.String"/>
+	<field name="txtCantCargoConsManAgrupSET" class="java.lang.String"/>
+	<field name="txtImpCargoConsManAgrupSET" class="java.lang.String"/>
+	<field name="txtCantAbonoConsManAgrupSET" class="java.lang.String"/>
+	<field name="txtImpAbonoConsManAgrupSET" class="java.lang.String"/>
+	<field name="txtCantCargoConsDetectSET" class="java.lang.String"/>
+	<field name="txtImpCargoConsDetectSET" class="java.lang.String"/>
+	<field name="txtCantAbonoConsDetectSET" class="java.lang.String"/>
+	<field name="txtImpAbonoConsDetectSET" class="java.lang.String"/>
+	<field name="txtCantCargoConsAclaSET" class="java.lang.String"/>
+	<field name="txtImpCargoConsAclaSET" class="java.lang.String"/>
+	<field name="txtCantAbonoConsAclaSET" class="java.lang.String"/>
+	<field name="txtImpAbonoConsAclaSET" class="java.lang.String"/>
+	<field name="txtCantCargoConsPorConsSET" class="java.lang.String"/>
+	<field name="txtImpCargoConsPorConsSET" class="java.lang.String"/>
+	<field name="txtCantAbonoConsPorConsSET" class="java.lang.String"/>
+	<field name="txtImpAbonoConsPorConsSET" class="java.lang.String"/>
+	<field name="txtCantCargoMovPendSET" class="java.lang.String"/>
+	<field name="txtImpCargoMovPendSET" class="java.lang.String"/>
+	<field name="txtCantAbonoMovPendSET" class="java.lang.String"/>
+	<field name="txtImpAbonoMovPendSET" class="java.lang.String"/>
+	<field name="txtCantCargoTotalSET" class="java.lang.String"/>
+	<field name="txtImpCargoTotalSET" class="java.lang.String"/>
+	<field name="txtCantAbonoTotalSET" class="java.lang.String"/>
+	<field name="txtImpAbonoTotalSET" class="java.lang.String"/>
+	<field name="txtCantCargoAjusteSET" class="java.lang.String"/>
+	<field name="txtImpCargoAjusteSET" class="java.lang.String"/>
+	<field name="txtCantAbonoAjusteSET" class="java.lang.String"/>
+	<field name="txtImpAbonoAjusteSET" class="java.lang.String"/>
+	<field name="txtCantCargoGranTotalSET" class="java.lang.String"/>
+	<field name="txtImpCargoGranTotalSET" class="java.lang.String"/>
+	<field name="txtCantAbonoGranTotalSET" class="java.lang.String"/>
+	<field name="txtImpAbonoGranTotalSET" class="java.lang.String"/>
+	<field name="txtSaldoInicialSET" class="java.lang.String"/>
+	<field name="txtImpTotalSET" class="java.lang.String"/>
+	<field name="txtCantCargoMovDiaBANCO" class="java.lang.String"/>
+	<field name="txtImpCargoMovDiaBANCO" class="java.lang.String"/>
+	<field name="txtCantAbonoMovDiaBANCO" class="java.lang.String"/>
+	<field name="txtImpAbonoMovDiaBANCO" class="java.lang.String"/>
+	<field name="txtCantCargoConsAutomBANCO" class="java.lang.String"/>
+	<field name="txtImpCargoConsAutomBANCO" class="java.lang.String"/>
+	<field name="txtCantAbonoConsAutomBANCO" class="java.lang.String"/>
+	<field name="txtImpAbonoConsAutomBANCO" class="java.lang.String"/>
+	<field name="txtCantCargoConsManAgrupBANCO" class="java.lang.String"/>
+	<field name="txtImpCargoConsManAgrupBANCO" class="java.lang.String"/>
+	<field name="txtCantAbonoConsManAgrupBANCO" class="java.lang.String"/>
+	<field name="txtImpAbonoConsManAgrupBANCO" class="java.lang.String"/>
+	<field name="txtCantCargoConsDetectBANCO" class="java.lang.String"/>
+	<field name="txtImpCargoConsDetectBANCO" class="java.lang.String"/>
+	<field name="txtCantAbonoConsDetectBANCO" class="java.lang.String"/>
+	<field name="txtImpAbonoConsDetectBANCO" class="java.lang.String"/>
+	<field name="txtCantCargoConsAclaBANCO" class="java.lang.String"/>
+	<field name="txtImpCargoConsAclaBANCO" class="java.lang.String"/>
+	<field name="txtCantAbonoConsAclaBANCO" class="java.lang.String"/>
+	<field name="txtImpAbonoConsAclaBANCO" class="java.lang.String"/>
+	<field name="txtCantCargoConsPorConsBANCO" class="java.lang.String"/>
+	<field name="txtImpCargoConsPorConsBANCO" class="java.lang.String"/>
+	<field name="txtCantAbonoConsPorConsBANCO" class="java.lang.String"/>
+	<field name="txtImpAbonoConsPorConsBANCO" class="java.lang.String"/>
+	<field name="txtCantCargoMovPendBANCO" class="java.lang.String"/>
+	<field name="txtImpCargoMovPendBANCO" class="java.lang.String"/>
+	<field name="txtCantAbonoMovPendBANCO" class="java.lang.String"/>
+	<field name="txtImpAbonoMovPendBANCO" class="java.lang.String"/>
+	<field name="txtCantCargoTotalBANCO" class="java.lang.String"/>
+	<field name="txtImpCargoTotalBANCO" class="java.lang.String"/>
+	<field name="txtCantAbonoTotalBANCO" class="java.lang.String"/>
+	<field name="txtImpAbonoTotalBANCO" class="java.lang.String"/>
+	<field name="txtCantCargoAjusteBANCO" class="java.lang.String"/>
+	<field name="txtImpCargoAjusteBANCO" class="java.lang.String"/>
+	<field name="txtCantAbonoAjusteBANCO" class="java.lang.String"/>
+	<field name="txtImpAbonoAjusteBANCO" class="java.lang.String"/>
+	<field name="txtCantCargoGranTotalBANCO" class="java.lang.String"/>
+	<field name="txtImpCargoGranTotalBANCO" class="java.lang.String"/>
+	<field name="txtCantAbonoGranTotalBANCO" class="java.lang.String"/>
+	<field name="txtImpAbonoGranTotalBANCO" class="java.lang.String"/>
+	<field name="txtSaldoInicialBANCO" class="java.lang.String"/>
+	<field name="txtImpTotalBANCO" class="java.lang.String"/>
+	<field name="cmbBanco" class="java.lang.String"/>
+	<field name="cmbChequera" class="java.lang.String"/>
+	<field name="txtUlt" class="java.lang.String"/>
+	<field name="txtPeriodo" class="java.lang.String"/>
+	<field name="txtProx" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="97" splitType="Stretch">
+			<textField pattern="h.mm a">
+				<reportElement x="479" y="69" width="83" height="10" uuid="46847a8a-88ab-4a81-9011-5e6f5fa06740"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="15" y="1" width="58" height="40" uuid="f5a716d8-3537-4f78-9a35-2392a5ce0739"/>
+				<imageExpression><![CDATA["..//..//img//logo_set.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="438" y="69" width="39" height="10" uuid="c279b05d-424a-424d-a1c7-ba19a20dfc22"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="175" y="40" width="230" height="20" forecolor="#B2C8FF" uuid="ad18dcc9-36a3-4693-8aef-ed54ab2a4da8"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[MONITOR DE CONCILIACIONES]]></text>
+			</staticText>
+			<image>
+				<reportElement x="497" y="0" width="58" height="40" uuid="b3ccfd35-1bbb-401c-80af-f145b244254f"/>
+				<imageExpression><![CDATA["..//..//img//empresas//logoreporte.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="100" y="12" width="376" height="19" forecolor="#B2C8FF" uuid="837d62bd-7489-4848-8045-ef180a9a8701"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombreEmpresa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="438" y="59" width="39" height="10" uuid="9d98207e-b7de-4213-b7e8-9a956705d257"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="480" y="60" width="83" height="10" uuid="cdea5989-cf7c-43cc-b347-a002a3f84641"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="15" y="69" width="69" height="12" forecolor="#B2C8FF" uuid="e4380ed5-d46c-492b-b94a-6b0dd7aff9c0"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chequera:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="85" width="69" height="12" forecolor="#B2C8FF" uuid="4f238889-ff1f-4a9b-a552-71ef893636df"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Banco:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="88" y="70" width="100" height="12" uuid="7688faa9-d31b-4404-bffa-b568109d8279"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cmbBanco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="85" width="100" height="12" uuid="7c5a8a2c-5d3f-48c5-a20d-a7d25048730a"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cmbChequera}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="210" y="69" width="69" height="12" forecolor="#B2C8FF" uuid="a1c3c6a8-9314-4cc7-b597-e08eca366803"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Última Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="69" width="69" height="12" forecolor="#B2C8FF" uuid="13042c95-826c-404e-9e24-003270851bb6"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Próxima Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="69" width="51" height="12" forecolor="#B2C8FF" uuid="496d7c61-ac26-485e-a44f-d52df2be66ef"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Periodo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="210" y="85" width="69" height="12" uuid="b7f6fbb6-2615-489f-a6e7-a1e045afdaeb"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtUlt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="85" width="51" height="12" uuid="fa7bd485-ffab-457f-bba0-b786cf454c55"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtPeriodo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="85" width="69" height="12" uuid="c3bfc45c-1431-485c-976a-1d0cc8fed721"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtProx}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="94" y="26" width="47" height="14" backcolor="#B2C8FF" uuid="40d3d6c8-d1dc-4a17-9ec8-f66c341d6e1a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CARGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="193" y="26" width="47" height="14" backcolor="#B2C8FF" uuid="9af1f883-3ddf-4dee-b617-50067e81040e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ABONO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="26" width="47" height="14" backcolor="#B2C8FF" uuid="7c93985a-ca94-4d3b-8b77-5c900ee7886f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CARGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="440" y="26" width="47" height="14" backcolor="#B2C8FF" uuid="582b5734-2f03-4c6b-a362-f7a26a4d69ec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ABONO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="4" width="69" height="20" forecolor="#B2C8FF" uuid="e4f9eae4-45e0-4344-b859-20a970a6e77a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SET]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="4" width="69" height="20" forecolor="#B2C8FF" uuid="6d7bd833-3eaa-48c5-b7e6-78a4379d53ab"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BANCO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="77" y="40" width="219" height="1" uuid="f0b66676-79e2-4eee-a17b-f3824b936ac4"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="311" y="40" width="228" height="1" uuid="e4121be4-be79-48da-8bc1-870749cfd1f6"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="160" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="73" height="12" uuid="5f4238b9-67eb-4168-8f0e-d20fea12549b"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Mov. al día:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="12" width="73" height="12" uuid="74f08062-b46e-4dc8-af51-bd7161fe9c02"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Cons. Autom.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="24" width="73" height="12" uuid="74f08062-b46e-4dc8-af51-bd7161fe9c02"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Cons. Man. y Agrup.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="36" width="73" height="12" uuid="74f08062-b46e-4dc8-af51-bd7161fe9c02"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Detectados:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="48" width="73" height="12" uuid="74f08062-b46e-4dc8-af51-bd7161fe9c02"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Aclarados:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="73" height="12" uuid="74f08062-b46e-4dc8-af51-bd7161fe9c02"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Por conciliar:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="72" width="73" height="12" uuid="74f08062-b46e-4dc8-af51-bd7161fe9c02"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Mov. pendientes:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="84" width="73" height="12" uuid="74f08062-b46e-4dc8-af51-bd7161fe9c02"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="96" width="73" height="12" uuid="74f08062-b46e-4dc8-af51-bd7161fe9c02"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AJUSTE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="108" width="73" height="12" uuid="74f08062-b46e-4dc8-af51-bd7161fe9c02"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRAN TOTAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="77" y="0" width="25" height="12" uuid="723afb6e-a4a6-4907-bbc2-74666140b905"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantCargoMovDiaSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="110" y="0" width="70" height="12" uuid="e392056d-2f10-4f59-92e2-822bc936b54b"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoMovDiaSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="0" width="25" height="12" uuid="91ed308e-0a8e-4fc6-871f-807bfde4be3f"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoMovDiaSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="226" y="0" width="70" height="12" uuid="adb4649b-e936-4af2-bb3e-06f4963c23a2"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoMovDiaSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="12" width="25" height="12" uuid="8c9e669f-8e99-4964-859b-61eebc396941"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantCargoConsAutomSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="110" y="12" width="70" height="12" uuid="83c1dfbc-b98a-474d-94a9-bdcfe7d33e1a"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoConsAutomSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="12" width="25" height="12" uuid="d75e46b8-3339-402e-862d-7e36a806be33"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoConsAutomSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="226" y="12" width="70" height="12" uuid="2ea6696b-a0f7-4a9a-9768-0d519e8a0733"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoConsAutomSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="24" width="25" height="12" uuid="c3b31f55-ee86-4eb9-82f9-aede70ad5ef9"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantCargoConsManAgrupSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="110" y="24" width="70" height="12" uuid="62410db5-aabe-4bef-825e-97fab01adcfa"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoConsManAgrupSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="24" width="25" height="12" uuid="c77d56ad-4072-43c1-be37-e3ef10cc1d73"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoConsManAgrupBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="226" y="24" width="70" height="12" uuid="ffe027cb-92d9-470f-8c88-a8d96481ffd6"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoConsManAgrupSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="36" width="25" height="12" uuid="306a0bd5-356e-4113-b297-3c5e6d929d50"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantCargoConsDetectSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="110" y="36" width="70" height="12" uuid="102f0dc7-2976-42d6-b301-e85d2bfcfd0e"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoConsDetectSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="36" width="25" height="12" uuid="35a7aa44-c395-474a-b5be-d95ac9263568"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoConsDetectSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="226" y="36" width="70" height="12" uuid="ff3e00be-9a55-4603-92ae-650262644ea0"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoConsDetectSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="48" width="25" height="12" uuid="5b9f28a7-7283-4a34-9301-cbe35563c40c"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantCargoConsAclaSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="110" y="48" width="70" height="12" uuid="8b620adb-be6f-4629-8bda-10867e671d30"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoConsAclaSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="48" width="25" height="12" uuid="6854d0af-ad92-4519-9602-12072db3e032"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoConsAclaSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="226" y="48" width="70" height="12" uuid="a98f31b1-ad59-48dc-8566-ccc68c4361cf"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoConsAclaSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="60" width="25" height="12" uuid="616a0566-9eab-4cc1-b158-720aadbfaa77"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantCargoConsPorConsSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="110" y="60" width="70" height="12" uuid="3ca7385b-163b-42eb-b3cd-13f025c80ed6"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoConsPorConsSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="60" width="25" height="12" uuid="5c37a888-d862-4825-a760-f9999a7253af"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoConsPorConsSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="226" y="60" width="70" height="12" uuid="ea0dae7a-a473-4047-8eed-188278e27603"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoConsPorConsSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="72" width="25" height="12" uuid="0e855f1f-fcbc-46c2-a45c-b33c18a6331c"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantCargoMovPendSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="110" y="72" width="70" height="12" uuid="68a0f5df-0649-4aeb-ba4a-9054f9548d93"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoMovPendSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="72" width="25" height="12" uuid="217d9b14-53c6-4b9a-9d7f-34e01dde6106"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoMovPendSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="226" y="72" width="70" height="12" uuid="8c19758f-06d9-43c7-91d9-c85c432bce6f"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoMovPendSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="84" width="25" height="12" uuid="c6994862-4b9d-4d3b-aaf8-fd670c0ee283"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoTotalSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="110" y="84" width="70" height="12" uuid="5879da3b-8bfe-465d-b283-35e00cb71595"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoTotalSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="84" width="25" height="12" uuid="82d25cce-d6bd-4c4f-95dd-889488c1ef5e"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoTotalSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="226" y="84" width="70" height="12" uuid="30af8cd0-0948-4af3-bed4-1193724e7377"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoTotalSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="96" width="25" height="12" uuid="c5e1f72c-67fa-4319-a03a-41f07497c7dd"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantCargoAjusteSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="110" y="96" width="70" height="12" uuid="abd1e2d4-dc75-4fc7-a064-80d156ce78b7"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoAjusteSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="96" width="25" height="12" uuid="fded65f8-3d78-4a67-9037-3ebc08507a72"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoAjusteSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="226" y="96" width="70" height="12" uuid="1a51677a-40d7-4240-8c2d-5a07278756df"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoAjusteSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="108" width="25" height="12" uuid="1e9737d2-6e50-439e-a982-3afbcdc0ae9f"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantCargoGranTotalSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="110" y="108" width="70" height="12" uuid="200b470b-3e96-474f-ac46-b3f5e4200a32"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoGranTotalSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="108" width="25" height="12" uuid="e1104d60-33ad-4683-926f-4c46b314bf96"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoGranTotalSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="226" y="108" width="70" height="12" uuid="31f9cec3-44dc-4f1b-a3b4-a853b39b1da8"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoGranTotalSET}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="0" width="25" height="12" uuid="723afb6e-a4a6-4907-bbc2-74666140b905"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantCargoMovDiaBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="348" y="0" width="70" height="12" uuid="e392056d-2f10-4f59-92e2-822bc936b54b"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoMovDiaBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="0" width="25" height="12" uuid="91ed308e-0a8e-4fc6-871f-807bfde4be3f"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoMovDiaBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="469" y="0" width="70" height="12" uuid="adb4649b-e936-4af2-bb3e-06f4963c23a2"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoMovDiaBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="12" width="25" height="12" uuid="8c9e669f-8e99-4964-859b-61eebc396941"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantCargoConsAutomBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="348" y="12" width="70" height="12" uuid="83c1dfbc-b98a-474d-94a9-bdcfe7d33e1a"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoConsAutomBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="12" width="25" height="12" uuid="d75e46b8-3339-402e-862d-7e36a806be33"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoConsAutomBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="469" y="12" width="70" height="12" uuid="2ea6696b-a0f7-4a9a-9768-0d519e8a0733"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoConsAutomBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="24" width="25" height="12" uuid="c3b31f55-ee86-4eb9-82f9-aede70ad5ef9"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantCargoConsManAgrupBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="348" y="24" width="70" height="12" uuid="62410db5-aabe-4bef-825e-97fab01adcfa"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoConsManAgrupBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="24" width="25" height="12" uuid="c77d56ad-4072-43c1-be37-e3ef10cc1d73"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoConsManAgrupBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="469" y="24" width="70" height="12" uuid="ffe027cb-92d9-470f-8c88-a8d96481ffd6"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoConsManAgrupBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="36" width="25" height="12" uuid="306a0bd5-356e-4113-b297-3c5e6d929d50"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantCargoConsDetectBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="348" y="36" width="70" height="12" uuid="102f0dc7-2976-42d6-b301-e85d2bfcfd0e"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoConsDetectBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="36" width="25" height="12" uuid="35a7aa44-c395-474a-b5be-d95ac9263568"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoConsDetectBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="469" y="36" width="70" height="12" uuid="ff3e00be-9a55-4603-92ae-650262644ea0"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoConsDetectBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="48" width="25" height="12" uuid="5b9f28a7-7283-4a34-9301-cbe35563c40c"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantCargoConsAclaBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="348" y="48" width="70" height="12" uuid="8b620adb-be6f-4629-8bda-10867e671d30"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoConsAclaBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="48" width="25" height="12" uuid="6854d0af-ad92-4519-9602-12072db3e032"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoConsAclaBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="469" y="48" width="70" height="12" uuid="a98f31b1-ad59-48dc-8566-ccc68c4361cf"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoConsAclaBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="60" width="25" height="12" uuid="616a0566-9eab-4cc1-b158-720aadbfaa77"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantCargoConsPorConsBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="348" y="60" width="70" height="12" uuid="3ca7385b-163b-42eb-b3cd-13f025c80ed6"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoConsPorConsBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="60" width="25" height="12" uuid="5c37a888-d862-4825-a760-f9999a7253af"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoConsPorConsBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="469" y="60" width="70" height="12" uuid="ea0dae7a-a473-4047-8eed-188278e27603"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoConsPorConsBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="72" width="25" height="12" uuid="0e855f1f-fcbc-46c2-a45c-b33c18a6331c"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantCargoMovPendBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="348" y="72" width="70" height="12" uuid="68a0f5df-0649-4aeb-ba4a-9054f9548d93"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoMovPendBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="72" width="25" height="12" uuid="217d9b14-53c6-4b9a-9d7f-34e01dde6106"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoMovPendBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="469" y="72" width="70" height="12" uuid="8c19758f-06d9-43c7-91d9-c85c432bce6f"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoMovPendBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="84" width="25" height="12" uuid="c6994862-4b9d-4d3b-aaf8-fd670c0ee283"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoTotalBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="348" y="84" width="70" height="12" uuid="5879da3b-8bfe-465d-b283-35e00cb71595"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoTotalBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="84" width="25" height="12" uuid="82d25cce-d6bd-4c4f-95dd-889488c1ef5e"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoTotalBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="469" y="84" width="70" height="12" uuid="30af8cd0-0948-4af3-bed4-1193724e7377"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoTotalBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="96" width="25" height="12" uuid="c5e1f72c-67fa-4319-a03a-41f07497c7dd"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantCargoAjusteBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="348" y="96" width="70" height="12" uuid="abd1e2d4-dc75-4fc7-a064-80d156ce78b7"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoAjusteBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="96" width="25" height="12" uuid="fded65f8-3d78-4a67-9037-3ebc08507a72"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoAjusteBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="469" y="96" width="70" height="12" uuid="1a51677a-40d7-4240-8c2d-5a07278756df"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoAjusteBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="108" width="25" height="12" uuid="1e9737d2-6e50-439e-a982-3afbcdc0ae9f"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantCargoGranTotalBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="348" y="108" width="70" height="12" uuid="200b470b-3e96-474f-ac46-b3f5e4200a32"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpCargoGranTotalBANCO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="108" width="25" height="12" uuid="e1104d60-33ad-4683-926f-4c46b314bf96"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtCantAbonoGranTotalBANCO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="469" y="108" width="70" height="12" uuid="31f9cec3-44dc-4f1b-a3b4-a853b39b1da8"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpAbonoGranTotalBANCO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="73" y="124" width="84" height="12" uuid="0a798171-9688-42ed-b847-6978bf921fa5"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Saldo Inicial SET]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="311" y="124" width="92" height="12" uuid="44756d53-63d5-4694-920d-753ccd8bd7f5"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Saldo Inicial BANCO]]></text>
+			</staticText>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="75" y="136" width="70" height="12" uuid="e1c1f929-2b5a-4411-a82c-186e3bd046c1"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtSaldoInicialSET}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="311" y="136" width="70" height="12" uuid="f4b08636-d768-4b4b-a313-b6b521cca722"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtSaldoInicialBANCO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="153" y="136" width="69" height="12" uuid="27a78d16-428d-4a56-806f-7616211c96dd"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Importe Total SET]]></text>
+			</staticText>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="226" y="136" width="70" height="12" uuid="4ee7200b-227a-4ab1-abfc-1dd03238c46a"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpTotalSET}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="384" y="136" width="84" height="12" uuid="2ddd0ca6-5fa4-454f-9662-0be93da8e00a"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Importe Total BANCO]]></text>
+			</staticText>
+			<textField pattern="##,###,###,##0.00;-##,###,###,##0.00">
+				<reportElement x="469" y="136" width="70" height="12" uuid="112d9d32-5ab7-4674-862e-7c80c7820ea3"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtImpTotalBANCO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="18" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="0" width="40" height="20" uuid="300290ad-0878-412c-868b-f78d848266a9"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="0" width="34" height="20" uuid="6c7ab214-fa8a-48e4-833d-b1c739cfe997"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="20" splitType="Stretch"/>
+	</summary>
+</jasperReport>

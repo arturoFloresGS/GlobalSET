@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="reporteCuposProvr" pageWidth="800" pageHeight="500" whenNoDataType="AllSectionsNoDetail" orientation="Landscape" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">	<property name="ireport.zoom" value="2.0"/>	<property name="ireport.zoom" value="2.0"/>	<property name="ireport.zoom" value="2.0"/>
+
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="69"/>
+	<field name="noEmpresa" class="java.lang.Integer"/>
+	<field name="nomEmpresa" class="java.lang.String"/>
+	<field name="descBanco" class="java.lang.String"/>
+	<field name="idChequera" class="java.lang.String"/>
+	<field name="fechaPago" class="java.lang.String"/>
+	<field name="fechaPropuesta" class="java.lang.String"/>
+	<field name="descFormaPago" class="java.lang.String"/>
+	<field name="noBeneficiario" class="java.lang.Integer"/>
+	<field name="nomBeneficiario" class="java.lang.String"/>
+	<field name="concepto" class="java.lang.String"/>
+	<field name="idBancoBenef" class="java.lang.Integer"/>
+	<field name="idChequeraBenef" class="java.lang.String"/>
+	<field name="noDocto" class="java.lang.String"/>
+	<field name="cveControl" class="java.lang.String"/>
+	<field name="importe" class="java.lang.Double"/>
+	
+	<variable name="importex" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{importe}]]></variableExpression>
+	</variable>
+	
+	<variable name="subTotal" class="java.lang.Double" resetType="Group" resetGroup="Group1" calculation="Sum">
+		<variableExpression><![CDATA[$F{importe}]]></variableExpression>
+	</variable>
+	
+	
+	<group name="Group1">		
+		<groupExpression><![CDATA[$F{noEmpresa}]]></groupExpression>
+		<groupHeader>
+			<band height="50" >
+				<rectangle>
+					<reportElement  x="2" y="11" width="338" height="29" forecolor="#FFFFFF" backcolor="#D8E0E9"/>
+				</rectangle>
+				<textField>
+					<reportElement  x="20" y="11" width="29" height="29" forecolor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial Black" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Integer"><![CDATA[$F{noEmpresa}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="70" y="11" width="270" height="29" forecolor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Black" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nomEmpresa}]]></textFieldExpression>
+				</textField>
+				
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="44">
+				<staticText>
+					<reportElement x="333" y="13" width="54" height="12"/>
+					<textElement>
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SUB-TOTAL]]></text>
+				</staticText>
+				<textField pattern="#,##0.00" hyperlinkType="None">
+					<reportElement x="387" y="13" width="53" height="12"/>
+					<textElement>
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{subTotal}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band />
+	</background>
+	<title>
+		<band height="5" />
+	</title>
+	<pageHeader>
+		<band height="54" >
+			<staticText>
+				<reportElement x="180" y="5" width="420" height="28" forecolor="#58ACFA"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE CUPOS POR PROVEEDOR]]></text>
+			</staticText>
+			<image>
+				<reportElement x="15" y="1" width="58" height="40"/>
+				<imageExpression><![CDATA["..//..//img//logo_set.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="720" y="1" width="58" height="40"/>
+				<imageExpression><![CDATA["..//..//img//empresas//logoreporte.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="240" y="23" width="300" height="29" forecolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomBeneficiario}]]></textFieldExpression>
+			</textField>
+			
+			
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" >
+			<staticText>
+				<reportElement  x="350" y="1" width="50" height="24"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Forma Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement  x="680" y="0" width="78" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clave Control]]></text>
+			</staticText>
+			<line>
+				<reportElement  x="-21" y="0" width="800" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement  x="-21" y="25" width="800" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement  x="2" y="0" width="58" height="25"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Banco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement  x="75" y="1" width="50" height="24"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chequera]]></text>
+			</staticText>
+			<staticText>
+				<reportElement  x="175" y="1" width="55" height="24"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fec Propuesta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement  x="230" y="0" width="60" height="25"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fec Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement  x="290" y="1" width="60" height="24"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Importe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement  x="480" y="1" width="102" height="24"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Concepto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement  x="610" y="0" width="48" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Docto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="38" >
+			<textField>
+				<reportElement  x="2" y="1" width="68" height="25" forecolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descBanco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement  x="75" y="1" width="50" height="25" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idChequera}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="180" y="1" width="55" height="25" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechaPropuesta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="235" y="1" width="55" height="25" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechaPago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement  x="340" y="1" width="65" height="25" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descFormaPago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement  x="680" y="1" width="78" height="25" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cveControl}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement  x="250" y="1" width="60" height="25" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{importe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement  x="480" y="1" width="150" height="25" forecolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{concepto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement  x="632" y="1" width="46" height="25" forecolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{noDocto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="28" />
+	</columnFooter>
+	<pageFooter>
+		<band height="20" >
+			<textField evaluationTime="Report">
+				<reportElement  x="718" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement  x="638" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" >
+			<textField pattern="#,##0.00">
+				<reportElement  x="597" y="17" width="100" height="20"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{importex}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement  x="514" y="13" width="50" height="20" forecolor="#CCCCCC" backcolor="#CCCCCC"/>
+			</rectangle>
+			<staticText>
+				<reportElement  x="517" y="13" width="45" height="17"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

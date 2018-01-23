@@ -1,0 +1,195 @@
+<list>
+
+    <month name="Ene-09" revenue="400263" average="80052">
+        <region name="Banorte" revenue="46130"/>
+        <region name="IXE" revenue="106976"/>
+        <region name="Santander" revenue="79554"/>
+        <region name="BBVA Bancomer" revenue="39252"/>
+        <region name="HSBC" revenue="128351"/>
+    </month>
+
+    <month name="Feb-09" revenue="379145" average="75829">
+        <region name="Banorte" revenue="70324"/>
+        <region name="IXE" revenue="88912"/>
+        <region name="Santander" revenue="69677"/>
+        <region name="BBVA Bancomer" revenue="59428"/>
+        <region name="HSBC" revenue="90804"/>
+    </month>
+
+    <month name="Mar-09" revenue="389687" average="77937">
+        <region name="Banorte" revenue="60431"/>
+        <region name="IXE" revenue="140982"/>
+        <region name="Santander" revenue="58196"/>
+        <region name="BBVA Bancomer" revenue="33373"/>
+        <region name="HSBC" revenue="96705"/>
+    </month>
+
+    <month name="Abr-09" revenue="460329" average="92065">
+        <region name="Banorte" revenue="78969"/>
+        <region name="IXE" revenue="85885"/>
+        <region name="Santander" revenue="78107"/>
+        <region name="BBVA Bancomer" revenue="65796"/>
+        <region name="HSBC" revenue="151572"/>
+    </month>
+
+    <month name="May-09" revenue="351014" average="70202">
+        <region name="Banorte" revenue="64069"/>
+        <region name="IXE" revenue="82415"/>
+        <region name="Santander" revenue="96397"/>
+        <region name="BBVA Bancomer" revenue="44627"/>
+        <region name="HSBC" revenue="63506"/>
+    </month>
+
+    <month name="Jun-09" revenue="384855" average="76971">
+        <region name="Banorte" revenue="55331"/>
+        <region name="IXE" revenue="113196"/>
+        <region name="Santander" revenue="55371"/>
+        <region name="BBVA Bancomer" revenue="58323"/>
+        <region name="HSBC" revenue="102634"/>
+    </month>
+
+    <month name="Jul-09" revenue="335192" average="67038">
+        <region name="Banorte" revenue="39445"/>
+        <region name="IXE" revenue="110750"/>
+        <region name="Santander" revenue="73722"/>
+        <region name="BBVA Bancomer" revenue="50595"/>
+        <region name="HSBC" revenue="60680"/>
+    </month>
+
+    <month name="Ago-09" revenue="393654" average="78730">
+        <region name="Banorte" revenue="44801"/>
+        <region name="IXE" revenue="98806"/>
+        <region name="Santander" revenue="93673"/>
+        <region name="BBVA Bancomer" revenue="50636"/>
+        <region name="HSBC" revenue="105738"/>
+    </month>
+
+    <month name="Sep-09" revenue="472554" average="94510">
+        <region name="Banorte" revenue="61134"/>
+        <region name="IXE" revenue="136467"/>
+        <region name="Santander" revenue="93624"/>
+        <region name="BBVA Bancomer" revenue="32293"/>
+        <region name="HSBC" revenue="149036"/>
+    </month>
+
+    <month name="Oct-09" revenue="324299" average="64859">
+        <region name="Banorte" revenue="32078"/>
+        <region name="IXE" revenue="85420"/>
+        <region name="Santander" revenue="80483"/>
+        <region name="BBVA Bancomer" revenue="64390"/>
+        <region name="HSBC" revenue="61928"/>
+    </month>
+
+    <month name="Nov-09" revenue="415403" average="83080">
+        <region name="Banorte" revenue="58832"/>
+        <region name="IXE" revenue="143128"/>
+        <region name="Santander" revenue="64295"/>
+        <region name="BBVA Bancomer" revenue="58261"/>
+        <region name="HSBC" revenue="90887"/>
+    </month>
+
+    <month name="Dec-09" revenue="386089" average="77217">
+        <region name="Banorte" revenue="80555"/>
+        <region name="IXE" revenue="118981"/>
+        <region name="Santander" revenue="87520"/>
+        <region name="BBVA Bancomer" revenue="27154"/>
+        <region name="HSBC" revenue="71879"/>
+    </month>
+
+    <month name="Ene-10" revenue="400263" average="80052">
+        <region name="Banorte" revenue="46130"/>
+        <region name="IXE" revenue="106976"/>
+        <region name="Santander" revenue="79554"/>
+        <region name="BBVA Bancomer" revenue="39252"/>
+        <region name="HSBC" revenue="128351"/>
+    </month>
+
+    <month name="Feb-10" revenue="379145" average="75829">
+        <region name="Banorte" revenue="70324"/>
+        <region name="IXE" revenue="88912"/>
+        <region name="Santander" revenue="69677"/>
+        <region name="BBVA Bancomer" revenue="59428"/>
+        <region name="HSBC" revenue="90804"/>
+    </month>
+
+    <month name="Mar-10" revenue="389687" average="77937">
+        <region name="Banorte" revenue="60431"/>
+        <region name="IXE" revenue="140982"/>
+        <region name="Santander" revenue="58196"/>
+        <region name="BBVA Bancomer" revenue="33373"/>
+        <region name="HSBC" revenue="96705"/>
+    </month>
+
+    <month name="Abr-10" revenue="460329" average="92065">
+        <region name="Banorte" revenue="78969"/>
+        <region name="IXE" revenue="85885"/>
+        <region name="Santander" revenue="78107"/>
+        <region name="BBVA Bancomer" revenue="65796"/>
+        <region name="HSBC" revenue="151572"/>
+    </month>
+
+    <month name="May-10" revenue="351014" average="70202">
+        <region name="Banorte" revenue="64069"/>
+        <region name="IXE" revenue="82415"/>
+        <region name="Santander" revenue="96397"/>
+        <region name="BBVA Bancomer" revenue="44627"/>
+        <region name="HSBC" revenue="63506"/>
+    </month>
+
+    <month name="Jun-10" revenue="384855" average="76971">
+        <region name="Banorte" revenue="55331"/>
+        <region name="IXE" revenue="113196"/>
+        <region name="Santander" revenue="55371"/>
+        <region name="BBVA Bancomer" revenue="58323"/>
+        <region name="HSBC" revenue="102634"/>
+    </month>
+
+    <month name="Jul-10" revenue="335192" average="67038">
+        <region name="Banorte" revenue="39445"/>
+        <region name="IXE" revenue="110750"/>
+        <region name="Santander" revenue="73722"/>
+        <region name="BBVA Bancomer" revenue="50595"/>
+        <region name="HSBC" revenue="60680"/>
+    </month>
+
+    <month name="Ago-10" revenue="393654" average="78730">
+        <region name="Banorte" revenue="44801"/>
+        <region name="IXE" revenue="98806"/>
+        <region name="Santander" revenue="93673"/>
+        <region name="BBVA Bancomer" revenue="50636"/>
+        <region name="HSBC" revenue="105738"/>
+    </month>
+
+    <month name="Sep-10" revenue="472554" average="94510">
+        <region name="Banorte" revenue="61134"/>
+        <region name="IXE" revenue="136467"/>
+        <region name="Santander" revenue="93624"/>
+        <region name="BBVA Bancomer" revenue="32293"/>
+        <region name="HSBC" revenue="149036"/>
+    </month>
+
+    <month name="Oct-10" revenue="324299" average="64859">
+        <region name="Banorte" revenue="32078"/>
+        <region name="IXE" revenue="85420"/>
+        <region name="Santander" revenue="80483"/>
+        <region name="BBVA Bancomer" revenue="64390"/>
+        <region name="HSBC" revenue="61928"/>
+    </month>
+
+    <month name="Nov-10" revenue="415403" average="83080">
+        <region name="Banorte" revenue="58832"/>
+        <region name="IXE" revenue="143128"/>
+        <region name="Santander" revenue="64295"/>
+        <region name="BBVA Bancomer" revenue="58261"/>
+        <region name="HSBC" revenue="90887"/>
+    </month>
+
+    <month name="Dic-10" revenue="386089" average="77217">
+        <region name="Banorte" revenue="80555"/>
+        <region name="IXE" revenue="118981"/>
+        <region name="Santander" revenue="87520"/>
+        <region name="BBVA Bancomer" revenue="27154"/>
+        <region name="HSBC" revenue="71879"/>
+    </month>
+
+</list>

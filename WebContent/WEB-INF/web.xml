@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+	<display-name>SET</display-name>
+	
+	<!-- ESTABLECIMIENTO DEL LISTENER PARA EL CONTEXTO DE SPRING -->
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	<!-- DirectJNgine servlet -->
+ <servlet>
+    <servlet-name>log4j-init</servlet-name>
+    <servlet-class>com.webset.utils.logging.InitializeLogging</servlet-class>
+    <init-param>
+      <param-name>log4j-config-file</param-name>
+      <param-value>WEB-INF/log4jConfig.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+	<servlet>
+		<servlet-name>DjnServlet</servlet-name>
+		<servlet-class>com.softwarementors.extjs.djn.servlet.DirectJNgineServlet</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>false</param-value>
+		</init-param>   
+		<init-param>
+			<param-name>minify</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>createSourceFiles</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>providersUrl</param-name>
+			<param-value>djn/directprovider</param-value>
+		</init-param>
+	    <init-param>
+	      <param-name>batchRequestsMultithreadingEnabled</param-name><param-value>true</param-value>
+	    </init-param>
+	    <init-param>
+	      <param-name>apis</param-name>
+	      <param-value>
+	        test,
+	        demo,
+	        namespacedActionTest,
+			APP	        
+	      </param-value>
+	    </init-param>
+		<!-- CONFIGURACION DJN demo -->
+	    <init-param>
+	      <param-name>demo.apiFile</param-name>
+	      <param-value>demo/Api.js</param-value>
+	    </init-param>
+	    <init-param>
+	      <param-name>demo.apiNamespace</param-name>
+	      <param-value>Ext.app</param-value>
+	    </init-param>
+		<!-- CONFIGURACION DJN SET -->
+	    <init-param>
+	      <param-name>APP.apiFile</param-name>
+	      <param-value>js/RemoteServer/RemoteApi.js</param-value>
+	    </init-param>
+	    <init-param>
+	      <param-name>APP.apiNamespace</param-name>
+	      <param-value>Ext.setapp</param-value>
+	    </init-param>	
+		<!--  AGREGAR CLASES DE LLAMADA REMOTA -->
+	    <init-param>
+	      <param-name>APP.classes</param-name>
+	      <param-value>
+	      	com.webset.set.seguridad.action.SeguridadAction,    	
+	      	com.webset.set.seguridad.action.SegFacultadComponenteAction,
+	      	com.webset.set.seguridad.action.SegPerfilFacultadAction,
+	      	com.webset.set.seguridad.action.SegFacultadAction,
+	      	com.webset.set.seguridad.action.SegPerfilAction,
+	      	com.webset.set.seguridad.action.SegCatTipoComponenteAction,			
+			com.webset.set.seguridad.action.SegUsuarioAction,
+			com.webset.set.seguridad.action.SegAreaAction,
+	      	com.webset.set.seguridad.action.SegCajaAction,
+	      	com.webset.set.seguridad.action.SegEmpresaAction,
+	      	com.webset.set.seguridad.action.SegOrigenAction,
+	      	com.webset.set.seguridad.action.SegPersonasAction,
+	      	com.webset.set.seguridad.action.SegComponentesAction,
+			com.webset.set.seguridad.action.SegMenuAction,
+			com.webset.set.seguridad.action.SegUsuarioPerfilAction,
+			com.webset.set.seguridad.action.SegPolizasAction,
+			com.webset.set.seguridad.action.SeguridadUsuarioAction,
+			com.webset.set.seguridad.action.SegMantenimientoCatalogosAction,
+			com.webset.set.seguridad.action.SegConfiguracionesSETAction,
+			
+			com.webset.set.egresos.action.CapturaSolicitudesPagoAction,
+			com.webset.set.egresos.action.ModificacionPorBloqueAction,
+			com.webset.set.egresos.action.PropuestaPagoManualAction,		      	
+			com.webset.set.egresos.action.PagoPropuestasAction,
+			com.webset.set.egresos.action.PagoDePropuestasSetAction,
+			com.webset.set.egresos.action.CompensarPropuestasAction,
+			com.webset.set.egresos.action.ReporteDeCuposAction,
+			com.webset.set.egresos.action.ConsultaPropuestasAction,
+			com.webset.set.egresos.action.ConsultaPropuestasBAction,
+			com.webset.set.egresos.action.ConfirmacionTransferenciasAction,
+			com.webset.set.egresos.action.ConfirmacionCargoCtaAction,
+			com.webset.set.egresos.action.ConsultaPagosPendientesAction,
+			com.webset.set.egresos.action.RentasAction,
+			com.webset.set.egresos.action.MantenimientoBitacoraRentasAction,
+			com.webset.set.egresos.action.FactorajeAction,
+			com.webset.set.egresos.action.ConsultaSolicitudPagoSinPolizaAction,
+			com.webset.set.egresos.action.AplicacionDescuentosPropuestasAction,
+			com.webset.set.egresos.action.SeguimientoCPAction,
+			com.webset.set.egresos.action.GestionDeOperacionesDivisasAction,
+			
+			com.webset.set.financiamiento.action.AltaFinanciamientoAction,
+			com.webset.set.financiamiento.action.FinanciamientoModificacionCAction,
+			com.webset.set.financiamiento.action.GastosFinanciamientoCAction,
+			com.webset.set.financiamiento.action.AlertaVencimientoAction,
+			com.webset.set.financiamiento.action.ReportePasivosFAction,
+			com.webset.set.financiamiento.action.VencimientoFinanciamientoCAction,
+			com.webset.set.financiamiento.action.AvalesGarantiasFCAction,
+   			com.webset.set.financiamiento.action.ProvisionInteresesCAction,
+			com.webset.set.financiamiento.action.ReporteAnalisisLineasCAction,
+			
+			com.webset.set.bancaelectronica.action.BancaElectronicaAction,
+			com.webset.set.bancaelectronica.action.ChequeOcurreAction,
+			com.webset.set.bancaelectronica.action.ImportaBancaElectronicaAction,
+			com.webset.set.bancaelectronica.action.MovimientosBancaEAction,
+			com.webset.set.bancaelectronica.action.ReportesBancaXMLAction,	
+			com.webset.set.bancaelectronica.action.ControlArchivosTransferidosAction,
+			com.webset.set.bancaelectronica.action.ControlArchivosTransferidosAAction,
+			com.webset.set.bancaelectronica.action.MovimientosBEAction,
+			com.webset.set.bancaelectronica.action.ConsultaOperacionesBEAction,
+			com.webset.set.bancaelectronica.action.CapturaEstadoCuentaAction,
+			
+			com.webset.set.consultas.action.ConsultasAction,
+			com.webset.set.consultas.action.PosicionBancariaAction, 	      
+			com.webset.set.ingresos.action.GeneraReferenciaAction,
+			com.webset.set.traspasos.action.TraspasosAction,
+			com.webset.set.ingresos.action.IdentificacionIngresosAction,
+			
+			com.webset.set.bancaelectronica.action.EnvioTransferenciasAction,
+			com.webset.set.bancaelectronica.action.EnvioTransferenciasAAction,
+			
+			com.webset.set.layout.action.LayoutBancomerAction,
+			com.webset.set.coinversion.action.CoinversionAction,
+			com.webset.set.impresion.action.ImpresionAction,
+			com.webset.set.impresion.action.ImpresorasAction,
+			com.webset.set.impresion.action.CartasChequesAction,
+			com.webset.set.impresion.action.ControlChequesAction,
+			com.webset.set.impresion.action.ConfiguracionContinuaAction,
+			com.webset.set.impresion.action.ReimpresionAction,
+			com.webset.set.services.action.global.GlobalAction,
+			
+			com.webset.set.inversiones.action.InversionesAction,
+			com.webset.set.inversiones.action.MantenimientoDePapelAction,
+			com.webset.set.inversiones.action.MantenimientoValoresAction,
+			com.webset.set.inversiones.action.BarridoInversionAction,
+			com.webset.set.inversiones.action.CotizacionesAction,
+			com.webset.set.inversiones.action.InversionesRepAction,
+			
+			com.webset.set.reportes.action.ReportesAction,
+			com.webset.set.caja.action.CajaAction,
+			com.webset.set.conciliacionbancoset.action.ConciliacionBancoSetAction,
+			com.webset.set.prestamosinterempresas.action.PrestamosInterempresasAction,
+			
+			com.webset.set.impresion.action.MantenimientosAction,
+			com.webset.set.impresion.action.ChequesPorEntregarAction,
+			com.webset.set.impresion.action.ParametrosCartaAction,
+			com.webset.set.impresion.action.AsignacionFirmasAction,
+			com.webset.set.impresion.action.ChequesTransitoAction,
+			com.webset.set.interfaz.action.CargaPagosAction,
+			com.webset.set.impresion.action.CartasPorEntregarAction,
+			
+			com.webset.set.utilerias.action.MantenimientoChequerasAction,
+			com.webset.set.utilerias.action.MantenimientoBancosAction,
+			com.webset.set.utilerias.action.MantenimientoCatalogosAction,<!--bjesus-->
+			com.webset.set.utilerias.action.MantenimientoConceptosAction,
+			com.webset.set.utilerias.action.MantenimientoValorDivisaAction,
+			com.webset.set.utilerias.action.EquivalenciaEmpresasAction,
+			com.webset.set.utilerias.action.GrupoEmpresasAction,
+			com.webset.set.utilerias.action.CodigosAction,
+			com.webset.set.utilerias.action.ProcesosGeneralesAction,
+			com.webset.set.utilerias.action.ReglasNegocioAction,
+			com.webset.set.utilerias.action.MantenimientoTiendasAction,
+			com.webset.set.utilerias.action.MantenimientoLeyendasAction,
+			com.webset.set.utilerias.action.MantenimientoSolicitantesFirmantesAction,
+			com.webset.set.utilerias.action.MantenimientoSolicitantesAction,
+			com.webset.set.utilerias.action.ConfiguracionSolicitudPagoAction,
+			com.webset.set.utilerias.action.MapeoAction,
+			com.webset.set.utilerias.action.EquivalenciaBancosAction,
+			<!--com.webset.set.utilerias.action.CargasInicialesAction,-->
+			
+			com.webset.set.cashflow.service.CashFlowActionImplements,
+			<!-- com.webset.set.flujos.action.PosicionBancariaAction, -->
+			com.webset.set.flujos.action.MantenimientoDeRubrosAction,
+			com.webset.set.flujos.action.CashFlowNAction,
+			com.webset.set.personas.action.ConsultaPersonasAction,
+			com.webset.set.interfaz.action.ExportacionPolizasAction,
+			com.webset.set.interfaz.action.ExportacionAction,
+			com.webset.set.derivados.action.ForwardsAction,
+			com.webset.set.monitor.action.MonitorAction,
+			com.webset.set.barridosfondeos.action.BarridosFondeosAction
+			
+			</param-value>
+	    </init-param>
+
+		<!-- more parameters... -->
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<!-- SERVLET MAPPING -->
+	<!-- DJN -->
+	<servlet-mapping>
+		<servlet-name>DjnServlet</servlet-name>
+		<url-pattern>/djn/directprovider/*</url-pattern>
+	</servlet-mapping>
+  	<session-config>
+		<session-timeout>720</session-timeout>
+	</session-config>
+  	<welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.html</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error.html</location>
+    </error-page>
+</web-app>

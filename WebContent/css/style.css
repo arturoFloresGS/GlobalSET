@@ -1,0 +1,144 @@
+* {
+	/*border-radius: 1px;
+	font-family: "Verdana";
+	font-size: 10.5px;*/
+}
+.boton {
+	text-align:right; 
+	margin-right: 20px; 
+	border:none; 
+	background-color: #A3BD31;
+	color: #FFF;
+	padding: 10px 10px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	font-weight: bold;
+}
+.boton:hover { 
+	background-color: #BFD55E;
+	color: #000;
+}
+.Seleccionado{
+	background-color: #6892d4 !important;
+}
+.GridBanco{
+	background-color: #F3F781 !important; <!-- amarillo -->
+}
+.GridEmpresa{
+	background-color: #D8BFD8 !important; <!-- azul -->
+}
+#btnCerrarSession{
+	height: 22px;
+	left: 590px;
+	top: 130px;
+	width: 87px!important;
+}
+.classScrollGral{
+	height: 100%;  	
+	width: 125%;
+	background-color: white;
+}
+#btnCambioEmpresa{
+	height: 22px;
+	left: 750px;
+	top: 130px;
+	width: 87px!important;
+}
+#ext-gen26{
+	background-color: #CEDFF5;
+	border-top-color: #8DB2E3;
+}
+html, body {
+	font:normal 12px verdana;
+	margin:0;
+	padding:0;
+	border:0 none;
+	overflow:hidden;
+	height:100%;
+}
+p {
+	margin:5px;
+}
+.settings {
+	background-image:"url(../img/icons/folder_wrench.png)";
+}
+.nav {
+	background-image:"url(../img/icons/folder_go.png)";
+}
+.custom-accordion .x-panel-header {
+	//margins:'1 1 1 1',
+	//padding:1px 1px;
+	//font-weight:bold;
+	//font-style:italic;
+	//color:#000;
+}
+/*.x-grid3-row td {
+	//font-family: 'Brush Script MT';
+	//font-weight: bold;
+	color: blue;//color para el grid egresos
+}*/
+
+.row-font-color-blue tr {
+	color: blue;//color para el grid egresos
+}
+.row-font-color-red tr{
+	color: red;
+} 
+
+.row-font-color-green tr{
+	color: green;
+}
+.row-background-color-blue tr{
+	background-color: #A9D0E1;
+}
+
+
+.menu_seguridad{background:url(../img/menu/seguridad.png) 0 no-repeat !important;}
+.menu_folder{background:url(../img/menu/folder.gif) 0 no-repeat !important;}
+.mnu_seg_areas{background:url(../img/menu/seguridad/areas.png) 0 no-repeat !important;}
+.mnu_seg_asignar_rel{background:url(../img/menu/seguridad/asignar_relaciones.png) 0 no-repeat !important;}
+.mnu_seg_cajas{background:url(../img/menu/seguridad/cajas.png) 0 no-repeat !important;}
+.mnu_seg_empresas{background:url(../img/menu/seguridad/empresas.png) 0 no-repeat !important;}
+.mnu_seg_mtto_componentes{background:url(../img/menu/seguridad/mtto_componentes.png) 0 no-repeat !important;}
+.mnu_seg_mtto_facultades{background:url(../img/menu/seguridad/mtto_facultades.png) 0 no-repeat !important;}
+.mnu_seg_mtto_usuarios{background:url(../img/menu/seguridad/mnu_seg_mtto_usuarios.png) 0 no-repeat !important;}
+.mnu_seg_origenes{background:url(../img/menu/seguridad/origenes.png) 0 no-repeat !important;}
+.mnu_seg_personas{background:url(../img/menu/seguridad/personas.png) 0 no-repeat !important;}
+.mnu_seg_usuarios{background:url(../img/menu/seguridad/usuarios.png) 0 no-repeat !important;}
+
+.mnu_seg_componentes{background:url(../img/menu/seguridad/componentes.png) 0 no-repeat !important;}
+.mnu_seg_tipos_componentes{background:url(../img/menu/seguridad/componentes.png) 0 no-repeat !important;}
+
+.menu_banca_electronica{background:url(../img/menu/banca_electronica.png) 0 no-repeat !important;}
+.menu_coinversion{background:url(../img/menu/coinversion.png) 0 no-repeat !important;}
+.menu_coinversion24{background:url(../img/menu/coinversion24.png) 0 no-repeat !important;}
+.menu_conciliacion_banco_conta{background:url(../img/menu/conciliacion_banco_conta.png) 0 no-repeat !important;}
+.menu_conciliacion_banco_set{background:url(../img/menu/conciliacion_banco_set.png) 0 no-repeat !important;}
+.menu_conciliacion_conta_set{background:url(../img/menu/conciliacion_conta_set.png) 0 no-repeat !important;}
+.menu_consultas{background:url(../img/menu/consultas.png) 0 no-repeat !important;}
+.menu_egresos{background:url(../img/menu/egresos.png) 0 no-repeat !important;}
+.menu_impresion{background:url(../img/menu/impresion.png) 0 no-repeat !important;}
+.menu_ingresos{background:url(../img/menu/ingresos.png) 0 no-repeat !important;}
+.menu_interfases{background:url(../img/menu/interfases.png) 0 no-repeat !important;}
+.menu_inversiones{background:url(../img/menu/inversiones.png) 0 no-repeat !important;}
+.menu_prestamos_inter_empresas{background:url(../img/menu/prestamos_inter_empresas.png) 0 no-repeat !important;}
+.menu_reportes{background:url(../img/menu/reportes.png) 0 no-repeat !important;}
+.menu_traspasos{background:url(../img/menu/traspasos.png) 0 no-repeat !important;}
+.menu_utilerias{background:url(../img/menu/utilerias.png) 0 no-repeat !important;}
+.menu_flujoEfectivo{background:url(../img/menu/flujoEfectivo.png) 0 no-repeat !important;}
+
+.menu_24x24{background:url(../img/24x24.png) 0 no-repeat !important;}
+
+.forma_alta{background:url(../img/formas/forma_alta.png) 0 no-repeat !important;}
+.forma_baja{background:url(../img/formas/forma_baja.png) 0 no-repeat !important;}
+.forma_cambio{background:url(../img/formas/forma_cambio.png) 0 no-repeat !important;}
+.price-fall td{background-color: #656565; color:#ffffff; font-weight: bold;!important;   }
+.price-rise td{background-color: #656565;  color:#ffffff;width:100;!important;}
+.price-1 td{background-color: #527F76;  color:#ffffff;width:100;font-weight: bold;!important;}
+.price-2 td{background-color: #42426F;  color:#ffffff;width:100;font-weight: bold;!important;}
+	
+::-webkit-scrollbar	{width: 12px; height: 12px;}
+::-webkit-scrollbar-track {background: transparent; border: 1px solid #656565;}
+::-webkit-scrollbar-thumb {border-radius: 2px; background: #A3BD31; border: 1px solid #656565;}
+::-webkit-scrollbar-button {background: #A3BD31; border-radius: 2px; width: 12px; height: 12px;	border: 1px solid #656565;
+}

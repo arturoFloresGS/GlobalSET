@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="reporteBancaE" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="empresaInf" class="java.lang.String"/>
+	<parameter name="empresaSup" class="java.lang.String"/>
+	<parameter name="bancoInf" class="java.lang.String"/>
+	<parameter name="bancoSup" class="java.lang.String"/>
+	<parameter name="lValor" class="java.lang.String"/>
+	<parameter name="dateSup" class="java.lang.String"/>
+	<parameter name="dateInf" class="java.lang.String"/>
+	<parameter name="concepto" class="java.lang.String"/>
+	<parameter name="tipoMov" class="java.lang.String"/>
+	<parameter name="origenMov" class="java.lang.String"/>
+	<parameter name="optMovimiento" class="java.lang.String"/>
+	<parameter name="opcion1" class="java.lang.String"/>
+	<parameter name="movtoTEF" class="java.lang.String"/>
+	<parameter name="movtoDia" class="java.lang.String"/>
+	<parameter name="movtoAutomata" class="java.lang.String"/>
+	<parameter name="exportaExcel" class="java.lang.String"/>
+	<queryString language="xPath">
+		<![CDATA[/map]]>
+	</queryString>
+	<field name="desc_observacion" class="java.lang.String"/>
+	<field name="nom_empresa" class="java.lang.String"/>
+	<field name="no_empresa" class="java.lang.String"/>
+	<field name="id_banco" class="java.lang.String"/>
+	<field name="secuencia" class="java.lang.String"/>
+	<field name="desc_banco" class="java.lang.String"/>
+	<field name="id_chequera" class="java.lang.String"/>
+	<field name="fec_valor" class="java.lang.String">
+		<fieldDescription><![CDATA[/map/]]></fieldDescription>
+	</field>
+	<field name="sucursal" class="java.lang.String"/>
+	<field name="folio_banco" class="java.lang.String"/>
+	<field name="referencia" class="java.lang.String"/>
+	<field name="id_divisa" class="java.lang.String"/>
+	<field name="importe" class="java.lang.String"/>
+	<field name="concepto_set" class="java.lang.String"/>
+	<field name="observacion" class="java.lang.String"/>
+	<field name="cargo_abono" class="java.lang.String"/>
+	<field name="importe_ca" class="java.lang.String"/>
+	<field name="no_folio_det" class="java.lang.String"/>
+	<field name="ejecutado" class="java.lang.String"/>
+	<field name="fec_alta" class="java.lang.String"/>
+	<field name="b_trasp_banco" class="java.lang.String"/>
+	<field name="b_trasp_conta" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="79">
+			<staticText>
+				<reportElement x="80" y="28" width="45" height="29" forecolor="#0000CC"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SET]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="26">
+			<staticText>
+				<reportElement x="196" y="0" width="218" height="25" forecolor="#0000CC"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MOVIMIENTOS DEL BANCO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20">
+			<staticText>
+				<reportElement x="0" y="0" width="47" height="20" forecolor="#000066"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="0" width="47" height="20" forecolor="#000066"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Divisa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="0" width="62" height="20" forecolor="#000066"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Sucursal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="0" width="70" height="20" forecolor="#000066"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Folio Banco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="226" y="0" width="67" height="20" forecolor="#000066"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Referencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="293" y="0" width="57" height="20" forecolor="#000066"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Importe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="0" width="26" height="20" forecolor="#000066"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[I/E]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="376" y="0" width="69" height="20" forecolor="#000066"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Concepto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="445" y="0" width="51" height="20" forecolor="#000066"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Folio SET]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="496" y="0" width="59" height="20" forecolor="#000066"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Ejecutado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<textField hyperlinkType="None">
+				<reportElement x="0" y="0" width="47" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fec_valor}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="47" y="0" width="47" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{id_divisa}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="96" y="0" width="61" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sucursal}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="157" y="0" width="69" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{folio_banco}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="226" y="0" width="67" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{referencia}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="293" y="0" width="58" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{importe}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="351" y="0" width="26" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cargo_abono}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="377" y="0" width="68" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{concepto_set}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="446" y="0" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{no_folio_det}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="497" y="0" width="58" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ejecutado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="23"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="21"/>
+	</pageFooter>
+	<summary>
+		<band height="18"/>
+	</summary>
+</jasperReport>

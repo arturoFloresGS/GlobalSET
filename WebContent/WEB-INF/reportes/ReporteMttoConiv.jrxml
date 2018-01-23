@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-01-31T17:05:56 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteMttoConiv" pageWidth="842" pageHeight="595" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="05a13e06-2cda-4314-9276-d34e8d9a4b70">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="shijo" class="java.lang.String"/>
+	<field name="snieto" class="java.lang.String"/>
+	<field name="sbisnieto" class="java.lang.String"/>
+	<field name="stataranieto" class="java.lang.String"/>
+	<field name="schosno" class="java.lang.String"/>
+	<field name="schosno2" class="java.lang.String"/>
+	<field name="schosno3" class="java.lang.String"/>
+	<field name="schosno4" class="java.lang.String"/>
+	<field name="sDivisa" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="72" splitType="Stretch">
+			<staticText>
+				<reportElement x="116" y="8" width="644" height="26" forecolor="#000000" uuid="65ec2d3a-5405-416b-b42c-28bf77c843d3"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTRUCTURA DE EMPRESAS FILIALES]]></text>
+			</staticText>
+			<image>
+				<reportElement x="15" y="1" width="58" height="40" uuid="25d44a0c-2572-4b09-af2d-9ad1840e2bdb"/>
+				<imageExpression><![CDATA["..//..//img//logo_set.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="720" y="1" width="58" height="40" uuid="c9cdaf94-3e9b-4f87-94e8-f5eeb577f323"/>
+				<imageExpression><![CDATA["..//..//img//empresas//logoreporte.png"]]></imageExpression>
+			</image>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="699" y="41" width="100" height="18" uuid="560d6c0b-1e13-4d4a-81b0-c1d1495a1f50"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-8" y="4" width="808" height="20" forecolor="#D8E0FF" backcolor="#D8E0FF" uuid="65d7042f-1500-41b8-86f5-396083ff287b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="-7" y="4" width="83" height="20" uuid="f9be2a5a-7ecc-4689-8117-712888d81ecd">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hijo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="79" y="4" width="83" height="20" uuid="90adf347-9123-4eea-a96c-98e32730d1b8">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nieto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="4" width="83" height="20" uuid="6e1d7925-2ded-49db-aee5-7489578bfc50">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bisnieto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="251" y="4" width="83" height="20" uuid="2904ec35-1356-4345-93a0-53631602fa32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tataranieto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="337" y="4" width="83" height="20" uuid="bf51c633-511e-4b24-8e13-d79d9a767a20">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chosno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="4" width="83" height="20" uuid="df4d03eb-b32d-491e-8fe5-46e66e83d4a7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chosno2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="509" y="4" width="83" height="20" uuid="fa2a657b-6df1-428b-a267-8a4d2155c825">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chosno3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="595" y="4" width="83" height="20" uuid="811989ee-2474-4851-badc-118366dcf8c0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chosno4]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="-7" y="0" width="83" height="20" uuid="7fabf575-88f8-4676-8a8f-f8626da2935b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{shijo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="79" y="0" width="83" height="20" uuid="82b280fe-6182-4fed-ba09-723e3242b5a2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{snieto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="165" y="0" width="83" height="20" uuid="95352bc4-2a82-4d52-81d0-cfca93669133"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sbisnieto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="0" width="83" height="20" uuid="81092698-00fb-4bcb-80ce-d03f722847d5">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stataranieto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="0" width="83" height="20" uuid="6002ade1-25dc-479d-a736-151bd12e387f">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{schosno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="0" width="83" height="20" uuid="946c3e08-f168-4c78-9dbf-62a5ab98ad1f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{schosno2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="509" y="0" width="83" height="20" uuid="d5ac69c6-8621-44df-afe4-d6fc291fb3d1">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{schosno3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="595" y="0" width="83" height="20" uuid="c6f3f27b-7a3b-4b0a-bbe6-fecdefc5668c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{schosno4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="680" y="0" width="40" height="20" uuid="36dd3134-3619-41f7-90f2-daebec6358ce">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sDivisa}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="17" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="710" y="0" width="27" height="20" uuid="7f6f4cf3-57b1-4c25-8879-20f63ad02edd"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="760" y="0" width="40" height="20" uuid="9810bb7e-3cb0-4922-b176-5ec442e7a8e1"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="21" splitType="Stretch"/>
+	</summary>
+</jasperReport>

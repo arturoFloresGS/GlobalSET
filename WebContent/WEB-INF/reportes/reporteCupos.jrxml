@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteCupos" pageWidth="800" pageHeight="500" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dfc30e65-4930-4a88-a755-fd8b8c2cd459">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="30"/>
+	<field name="noEmpresa" class="java.lang.Integer"/>
+	<field name="nomEmpresa" class="java.lang.String"/>
+	<field name="descBanco" class="java.lang.String"/>
+	<field name="idChequera" class="java.lang.String"/>
+	<field name="fechaPago" class="java.lang.String"/>
+	<field name="fechaPropuesta" class="java.lang.String"/>
+	<field name="descFormaPago" class="java.lang.String"/>
+	<field name="noBeneficiario" class="java.lang.Integer"/>
+	<field name="nomBeneficiario" class="java.lang.String"/>
+	<field name="concepto" class="java.lang.String"/>
+	<field name="idBancoBenef" class="java.lang.Integer"/>
+	<field name="idChequeraBenef" class="java.lang.String"/>
+	<field name="noDocto" class="java.lang.String"/>
+	<field name="cveControl" class="java.lang.String"/>
+	<field name="importe" class="java.lang.Double"/>
+	<variable name="importex" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{importe}]]></variableExpression>
+	</variable>
+	<variable name="subTotal" class="java.lang.Double" resetType="Group" resetGroup="Group1" calculation="Sum">
+		<variableExpression><![CDATA[$F{importe}]]></variableExpression>
+	</variable>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{noBeneficiario}]]></groupExpression>
+		<groupHeader>
+			<band height="19" splitType="Stretch">
+				<rectangle>
+					<reportElement uuid="81fc1efd-5dc8-463e-8205-f937312b657d" x="11" y="5" width="338" height="14" forecolor="#FFFFFF" backcolor="#D8E0E9"/>
+				</rectangle>
+				<textField>
+					<reportElement uuid="0ff7ea77-b3b0-4b3b-8d59-ec139d928e09" x="20" y="5" width="270" height="14" forecolor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Black" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nomBeneficiario}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="24" splitType="Stretch">
+				<staticText>
+					<reportElement uuid="e5cca9d7-8cac-41a8-9fe8-b0e3c9cab21c" x="220" y="4" width="54" height="12"/>
+					<textElement>
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SUB-TOTAL]]></text>
+				</staticText>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="17420943-fe2c-4463-8017-b0c314a6a4bf" x="274" y="4" width="64" height="12"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{subTotal}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="5" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="67" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="d6065ba3-f41e-48a1-b730-15b601a3e96e" x="274" y="39" width="241" height="18" forecolor="#58ACFA"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE PROPUESTAS PAGADAS]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="2963dd91-cd8f-4f1e-901c-e37c15e892d7" x="15" y="1" width="58" height="40"/>
+				<imageExpression><![CDATA["..//..//img//logo_set.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement uuid="4b0e49be-a425-4a97-a094-62b499a65739" x="720" y="1" width="58" height="40"/>
+				<imageExpression><![CDATA["..//..//img//empresas//logoreporte.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement uuid="94881cbc-e5c0-4976-8d7f-b4b887d03d26" x="203" y="7" width="382" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomEmpresa}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="13" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="5788b926-58ef-47ed-95a3-7899508d22c8" x="350" y="1" width="50" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Forma Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7f495a8f-33a5-47b2-934e-ba4bb58f18e5" x="680" y="1" width="78" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clave Control]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="1f1cb6ca-4ea1-43b9-8223-ae1b1ff9d81f" x="-21" y="0" width="800" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="f2bc6afe-8b3d-4ef3-b1a2-a67cca0a129d" x="2" y="12" width="756" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="58e66cab-e31a-486a-b6df-4083fb841471" x="2" y="1" width="58" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Banco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="39862ca5-babf-4f72-8f5b-9b7db3944994" x="75" y="1" width="50" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chequera]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dda643d1-3aa5-4e23-899d-1379c3e5d2aa" x="175" y="1" width="55" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fec Propuesta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6462e0c4-694f-46ec-bdc2-d02947fda3bd" x="230" y="1" width="60" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fec Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="af7d77a1-460d-4d24-9f67-7943118b82a9" x="290" y="1" width="60" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Importe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="57a7ed23-6bce-4d7d-aff8-ec3c20f13990" x="480" y="1" width="102" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Concepto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="201ba1b7-ade6-4c9f-91d7-c1947d111ddf" x="610" y="1" width="48" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Docto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="11" splitType="Stretch">
+			<textField>
+				<reportElement uuid="afdec9aa-0a59-4ae1-8949-8127b78d684c" x="2" y="1" width="68" height="9" forecolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descBanco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="121dc7da-b251-461b-b61f-b53c167440b9" x="75" y="1" width="50" height="9" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idChequera}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="90ae06ba-5688-41bf-ac8c-32b054d92760" x="175" y="1" width="55" height="9" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechaPropuesta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="506a88dd-b20b-4d1b-a9d6-b6bf4ad2b166" x="230" y="1" width="44" height="9" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechaPago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a2753ea8-9e67-4abb-aac1-ef92c225f4da" x="340" y="1" width="65" height="9" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descFormaPago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="810b9db5-3391-42ee-9c0c-40e8f747cd3f" x="680" y="1" width="78" height="9" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cveControl}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="be052456-93fb-4a96-8012-a88d998ec7f3" x="278" y="1" width="60" height="9" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{importe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f7cbce61-96ec-4b09-b15c-da2f87e2d05b" x="451" y="1" width="150" height="9" forecolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{concepto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2a004ad8-da95-4d96-a5d4-57e6e2fb1760" x="613" y="1" width="46" height="9" forecolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{noDocto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="10" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement uuid="5492c7a3-907b-45e7-9199-e6dfabefdc87" x="718" y="0" width="40" height="10"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5b243322-77d2-4349-89ae-c144e4dcf277" x="638" y="0" width="80" height="10"/>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="21" splitType="Stretch">
+			<textField pattern="#,##0.00">
+				<reportElement uuid="84956740-df1e-45bd-9d78-a577c7604d7e" x="238" y="5" width="100" height="12"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{importex}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="861c8884-6616-46c3-8e6c-b2dc087656e2" x="193" y="5" width="45" height="12" forecolor="#CCCCCC" backcolor="#CCCCCC"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="c1870c64-50dc-48b0-9464-d9d4be5426ac" x="193" y="5" width="45" height="12"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

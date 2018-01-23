@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="reporteTest" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="estatus" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from seg_usuario]]>
+	</queryString>
+	<field name="id_usuario" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="apellido_materno" class="java.lang.String"/>
+	<field name="apellido_paterno" class="java.lang.String"/>
+	<field name="contrasena" class="java.lang.String"/>
+	<field name="intentos" class="java.math.BigDecimal"/>
+	<field name="estatus" class="java.lang.String"/>
+	<field name="fecha_acceso" class="java.sql.Timestamp"/>
+	<field name="fecha_vencimiento" class="java.sql.Timestamp"/>
+	<field name="correo_electronico" class="java.lang.String"/>
+	<field name="clave_usuario" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="79">
+			<staticText>
+				<reportElement x="218" y="29" width="66" height="37" forecolor="#3333FF"/>
+				<textElement>
+					<font fontName="Levenim MT" size="24"/>
+				</textElement>
+				<text><![CDATA[TEST]]></text>
+			</staticText>
+			<line>
+				<reportElement x="33" y="66" width="435" height="1"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<staticText>
+				<reportElement x="133" y="0" width="85" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[usuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="218" y="1" width="100" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[estatus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="318" y="0" width="135" height="20"/>
+				<textElement>
+					<font fontName="Century Gothic" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Correo Electronico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="1" width="100" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[id]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21">
+			<textField hyperlinkType="None">
+				<reportElement x="133" y="0" width="85" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Lucida Console"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="33" y="1" width="100" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Lucida Console"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{id_usuario}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="218" y="1" width="100" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Lucida Console"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{estatus}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="318" y="1" width="135" height="20"/>
+				<textElement>
+					<font fontName="Lucida Console"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{correo_electronico}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54"/>
+	</pageFooter>
+	<summary>
+		<band height="42"/>
+	</summary>
+</jasperReport>

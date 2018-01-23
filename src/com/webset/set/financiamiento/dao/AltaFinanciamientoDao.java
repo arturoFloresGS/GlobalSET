@@ -1,0 +1,96 @@
+package com.webset.set.financiamiento.dao;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import com.webset.set.financiamiento.dto.AmortizacionCreditoDto;
+import com.webset.set.financiamiento.dto.AvalGarantiaDto;
+import com.webset.set.financiamiento.dto.BitacoraCreditoBanDto;
+import com.webset.set.financiamiento.dto.ContratoCreditoDto;
+import com.webset.set.financiamiento.dto.DisposicionCreditoDto;
+import com.webset.set.financiamiento.dto.ObligacionCreditoDto;
+import com.webset.set.financiamiento.dto.Parametro;
+import com.webset.set.financiamiento.dto.ProvisionCreditoDTO;
+import com.webset.set.utilerias.dto.GeneradorDto;
+import com.webset.set.utilerias.dto.LlenaComboGralDto;
+import com.webset.set.utilerias.dto.Retorno;
+
+public interface AltaFinanciamientoDao {
+	
+	public List<Retorno> consultarConfiguraSet();
+	public List<LlenaComboGralDto> obtenerContratos(int noEmpresa);
+	public List<LlenaComboGralDto> obtenerPais();
+	public List<LlenaComboGralDto>obtenerEmpresas(int idUsuario, boolean bMantenimiento);
+	public List<LlenaComboGralDto> obtenerTipoContratos(String psTipoFinan,boolean pbTipoContrato);
+	public List<LlenaComboGralDto> obtenerDestinoRecursos();
+	public List<LlenaComboGralDto> obtenerBancos(String psNacionalidad,String psDivisa,int noEmpresa);
+	public List<LlenaComboGralDto> obtenerDivisas(boolean bRestringido);
+	public List<LlenaComboGralDto> obtenerTasa();
+	public List<LlenaComboGralDto> obtenerArrendadoras();
+	public List<ContratoCreditoDto> obtenerContratoCredito(String clave);
+	public List<ContratoCreditoDto> obtenerNoDisp(String idFin);
+	public List<ContratoCreditoDto> obtenerTipoCambio(String idDiv);
+	public List<LlenaComboGralDto> obtenerDisposiciones(String psIdContrato,boolean pbEstatus);
+	public List<ContratoCreditoDto> selectPrefijo(int piBanco);
+	public List<ContratoCreditoDto> selectConsecutivoLinea();
+	public List<ContratoCreditoDto> selectInhabil(String pvFechaInhabil);
+	public List<ContratoCreditoDto> selectContratoCredito(String psIdContrato);
+	public int insertAltaContrato(ContratoCreditoDto dto,int noEmpresa);
+	public List<ContratoCreditoDto> selectExisteDispAmort(String psIdContrato);
+	public int deleteDispAmortizacion(String psFinanciamiento);
+	public List<DisposicionCreditoDto> selectDisposicionCred(String psIdContrato,int piDisposicion);
+	public List<ContratoCreditoDto> selectAltaAmortizaciones(String psIdContrato);
+	public int updateLinea(ContratoCreditoDto dto);
+	public List<LlenaComboGralDto> obtenerEquivalencia(String psDesBanco,int piBanco);
+	public List<ContratoCreditoDto>funSQLTasa(String psTasa);
+	public List<LlenaComboGralDto> funSQLComboClabe(int pvvValor2,String psDivisa,int noEmpresa);
+	public List<ContratoCreditoDto> selectBancoNacionalidad(int piBanco);
+	public List<ContratoCreditoDto> selectNoDisp(String finac);
+	public int updateLineaBancoCheq(ContratoCreditoDto dto);
+	public int insertDisposicion(DisposicionCreditoDto dto);
+	public int updateAmortizacionReestructurada(String psLinea, int piDisposicion);
+	public List<ContratoCreditoDto> selectDivision(int piBanco, String psChequera);
+	public int seleccionarFolioReal(String tipoFolio);
+	public int insertParametro(Parametro dto,int noEmpresa);
+	public List<DisposicionCreditoDto> selectDisp(String psIdContrato,int psIdDisp);
+	public List<DisposicionCreditoDto> buscaComisiones(String psLinea, int piDisp);
+	public List<AmortizacionCreditoDto> selectAmortizaciones(String psIdContrato,int piDisposicion,boolean pbCambioTasa ,String psTipoMenu ,String psProyecto ,int piCapital);
+	public int updateDisposicion(DisposicionCreditoDto dto);
+	public List<AmortizacionCreditoDto> selectExisteAmort(String psLinea , String psCredito);
+	public int deleteAmortizacion(String psFinanciamiento, int piDisp, boolean piInteres,boolean pbDisposicion);
+	public int deleteAGAsigLin(String psFinanciamiento, int piDisp);
+	public int deleteFactFacturas(String psFinanciamiento, int piDisp);
+	public int cancelaMovimiento(String psFinanciamiento, int piDisp);
+	public Map<String, Object> generador(GeneradorDto dto); 
+	public List<LlenaComboGralDto> funSQLComboPeriodo(boolean pdAmort);
+	public int funSQLDeleteProvisiones(String psFinanciamiento, int piDisp,boolean pbEstatus);
+	public int obtieneFolioAmort(String psIdContrato ,int psIdDisposicion) ;
+	public int insertBitacora(String psFinanciamiento ,int piDisposicion ,String psNota,String psFinanciamientoHijo,int noEmpresa);
+	public List<BitacoraCreditoBanDto> selectBitacora(String vsContrato, int viDisp,int noEmpresa);
+	public List<ObligacionCreditoDto> obtenerObligaciones(String psFinanciamiento,int noEmpresa) ;
+	public int insertObligacion(String psFinanciamiento ,int piClave, String descripcion,int noEmpresa);
+	public int deleteObligacion(int idClave,String psFinanciamiento,int noEmpresa);
+	public List<ObligacionCreditoDto> obtenerObligacionesTotal(String psFinanciamiento,int noEmpresa);
+	public List<Map<String, Object>> obtenerReporteContratos(String idFinanciamiento);
+	public int obtenerDifMeses(String idFinanciamiento,String idDisp);
+	public List<LlenaComboGralDto> selectComboEmpresaAval(int noEmpresa);
+	public List<AvalGarantiaDto> obtenerMontoDispuestoAvalada(String idFinanciamiento,int idDisp,int noEmpresa);
+	public List<LlenaComboGralDto> selectComboAvalGtia(int empresaAvalista,String psDivisa, int empresa,char tipoPersona);
+	public int selectAvaladaGtia(int piEmpresa,String psClave, int noEmpresa);
+	public int insertAvalGtiaLin(String psFinanciamiento, int piDisposicion, double pdMontoDispuesto ,int piEmpresaAvalista, String psClave, int noEmpresa, char tipoPersona);
+	public int existeAvalGtiaLinea(int noEmpresaAvalista,String  clave, int noEmpresa, char tipoPersona);
+	public int deleteLineaAvalada(int piEmpresa ,String psClave ,String linea,int credito, int noEmpresa, char tipoPersona);
+	public int insertAmort(AmortizacionCreditoDto amortizacionCreditoDto,String piBisiesto);
+	public int selectExisteAmortizacion(String txtLinea,int cmbDisp,int noAmortizacion);
+	public int existeIntProv(String psIdContrato , int psIdDisposicion ,  int iConsecutivo, Date dFecVencimiento, int noEmpresa) ;
+	public List<AmortizacionCreditoDto> funSQLSelectAmortizacionesIntProv(String IdFinanciamiento, int iIdDisposicion) ;
+	public int insertProvisionInteres(ProvisionCreditoDTO provision) ;
+	public int updateProvision(ProvisionCreditoDTO provision);
+	List<Map<String, String>> reporteAmorizaciones(String contrato, String disposicion);
+	public List<AmortizacionCreditoDto> selectAmortizacionesCapital(String psIdContrato, int psIdDisposicion,
+			boolean pbCambioTasa, String psTipoMenu, String psProyecto, int piCapital);
+	public List<AmortizacionCreditoDto> selectAmortizacionesInteres(String psIdContrato, int psIdDisposicion,
+			boolean pbCambioTasa, String psTipoMenu, String psProyecto, int piCapital,int dias);
+	public void deleteProvisionesFuturas(String IdFinanciamiento, int iIdDisposicion, Date vsFechaFin);
+}

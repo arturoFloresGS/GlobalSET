@@ -1,0 +1,285 @@
+<%@page
+	import="com.webset.set.financiamiento.action.GastosFinanciamientoCAction"%>
+<%@page
+	import="com.webset.set.financiamiento.dao.GastosFinanciamientoCDao"%>
+<%@page
+	import="com.webset.set.financiamiento.action.AltaFinanciamientoAction"%>
+<%@page
+	import="com.webset.set.financiamiento.dto.AmortizacionCreditoDto"%>
+<%@page
+	import="com.webset.set.financiamiento.action.ReporteAnalisisLineasCAction"%>
+<%@page
+	import="com.webset.set.financiamiento.action.VencimientoFinanciamientoCAction"%>
+<%@page import="net.sf.jasperreports.engine.JasperCompileManager"%>
+<%@page import="net.sf.jasperreports.engine.JasperReport"%>
+<%@page import="net.sf.jasperreports.engine.JRParameter"%>
+<%@page import="java.util.Locale"%>
+<%@page
+	import="com.webset.set.barridosfondeos.action.BarridosFondeosRepAction"%>
+<%@page import="net.sf.jasperreports.engine.data.JRXmlDataSource"%>
+<%@page import="java.io.FileWriter"%>
+<%@page import="java.io.BufferedWriter"%>
+<%@page import="java.io.FileOutputStream"%>
+<%@page import="java.io.File"%>
+<%@page import="java.io.FileNotFoundException"%>
+<%@page import="java.io.FileInputStream"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.io.InputStream"%>
+<%@page import="net.sf.jasperreports.engine.JRDataSource"%>
+<%@page import="net.sf.jasperreports.engine.JasperExportManager"%>
+<%@page import="net.sf.jasperreports.engine.JasperFillManager"%>
+<%@page import="net.sf.jasperreports.engine.JasperPrint"%>
+<%@page import="net.sf.jasperreports.engine.data.JRMapArrayDataSource"%>
+<%@page import="javax.xml.parsers.DocumentBuilder"%>
+<%@page import="javax.xml.parsers.DocumentBuilderFactory"%>
+<%@page import="javax.xml.parsers.ParserConfigurationException"%>
+<%@page import="org.w3c.dom.Document"%>
+<%@page import="org.xml.sax.SAXException"%>
+<%@page import="net.sf.jasperreports.engine.data.JRXmlDataSource"%>
+<%@page import="com.google.gson.Gson"%>
+<%@page import="com.google.gson.reflect.TypeToken"%>
+<%@page
+	import="com.webset.set.financiamiento.action.AlertaVencimientoAction"%>
+<%@page import="com.webset.set.consultas.action.ConsultasAction	"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>REPORTE</title>
+</head>
+<body>
+	<%
+		try {
+			String hdJason = null;
+
+			String noEmpresa = request.getParameter("noEmpresa");
+			String idUsuario = request.getParameter("idUsuario");
+			String sNombreRep = request.getParameter("nomReporte");
+			String sNomEmpresa = null;
+			String sOperacion = null;
+			String sFecha = null;
+			String idArbol = null;
+			String idBanco = null;
+			String idDivisa = null;
+			String idChequera = null;
+			String nombreArbol = null;
+			String tipoOperacion = null;
+
+			sNomEmpresa = request.getParameter("EMPRESA");
+			sOperacion = request.getParameter("opera");
+
+			if (sNombreRep.equals("ReporteFondeoBarrido")) {
+				hdJason = request.getParameter("hdJasonBF");
+			} else if (sNombreRep.equals("ReporteBarridosFondeosFec") || sNombreRep.equals("ReporteCuadreFondeo")) {
+				sFecha = request.getParameter("fecha");
+			} else if (sNombreRep.equals("ReporteFondeoBarridoAuto")) {
+				System.out.println("Empresa: " + noEmpresa);
+				hdJason = request.getParameter("hdJasonBF");
+				System.out.println("Report: " + hdJason.toString());
+				if (noEmpresa == null)
+					noEmpresa = "0";
+				idArbol = noEmpresa;
+				noEmpresa = "0";
+				String prefijoPant = request.getParameter("PREFIJO");
+				//idArbol = request.getParameter(prefijoPant + "cmbArbol");
+
+				idBanco = request.getParameter(prefijoPant + "txtIdBanco");
+				if (idBanco == "")
+					idBanco = "0";
+				System.out.println("Report " + idBanco);
+				idDivisa = request.getParameter(prefijoPant + "txtIdDivisa");
+				idChequera = request.getParameter(prefijoPant + "cmbChequera");
+				tipoOperacion = request.getParameter(prefijoPant + "cmbTipoOperacion");
+
+			}
+
+			JRMapArrayDataSource jrDataSource = null;
+			JasperPrint jasperPrint = null;
+			AltaFinanciamientoAction altaFinanciamientoAction = new AltaFinanciamientoAction();
+			GastosFinanciamientoCAction gastosFinanciamientoC = new GastosFinanciamientoCAction();
+			VencimientoFinanciamientoCAction vencimientoFinanciamientoCAction = new VencimientoFinanciamientoCAction();
+			ReporteAnalisisLineasCAction reporteAnalisisLineasCAction = new ReporteAnalisisLineasCAction();
+			BarridosFondeosRepAction accion = new BarridosFondeosRepAction();
+			ServletContext context = request.getSession().getServletContext();
+			AlertaVencimientoAction alertaPagos = new AlertaVencimientoAction();
+			ConsultasAction pdf = new ConsultasAction();
+			List<Map<String, Object>> lista = null;
+
+			List<Map<String, String>> lista2 = null;
+
+			if (sNombreRep.equals("ReporteArbolEmpresaFondeo")) {
+				lista = accion.obtenerReporteArbol(Integer.parseInt(noEmpresa), context);
+				System.out.println("Report " + lista);
+			} else if (sNombreRep.equals("ReporteFondeo"))
+				lista = accion.obtenerReporteFondeo(Integer.parseInt(idUsuario), "", context);
+			else if (sNombreRep.equals("ReporteFondeoBarrido"))
+				lista = accion.obtenerReporteBarridoAut(hdJason, context);
+			else if (sNombreRep.equals("ReporteArbolEstructura")) {
+				System.out.println("Entra al jsp 0");
+				lista = accion.obtenerReporteArbolEstruct(Integer.parseInt(noEmpresa), Integer.parseInt(idUsuario),
+						context);
+				System.out.println("Entra al jsp 1" + noEmpresa + " " + idUsuario + " " + context);
+				System.out.println("Entra al jsp 1" + lista);
+			} else if (sNombreRep.equals("ReporteFiliales"))
+				lista = accion.obtenerReporteFiliales(Integer.parseInt(noEmpresa), context);
+			else if (sNombreRep.equals("ReporteContratoCredito")) {
+				String idFinanciamiento = request.getParameter("idFinanciamiento");
+				lista = altaFinanciamientoAction.obtenerReporteContratos(idFinanciamiento, context);
+			} else if (sNombreRep.equals("ReporteDisposicionCredito")) {
+				lista = new ArrayList<Map<String, Object>>();
+				int meses = 0;
+				String idFinanciamiento = request.getParameter("idFinanciamiento");
+				String idDisposicion = request.getParameter("idDisposicion");
+				String fechaFinal = request.getParameter("fechaFinal");
+				String empresa = request.getParameter("empresa");
+				String montoDisposicion = request.getParameter("montoDisposicion");
+				String formaPago = request.getParameter("formaPago");
+				String valorTasa = request.getParameter("valorTasa");
+				String tasaFija = request.getParameter("tasaFija");
+				String banco = request.getParameter("banco");
+				String divisa = request.getParameter("divisa");
+				String tipoTasa = request.getParameter("tipoTasa");
+				String puntos = request.getParameter("puntos");
+				String clabe = request.getParameter("clabe");
+				String fechaInicio = request.getParameter("fechaInicio");
+				String tasaBase = request.getParameter("tasaBase");
+				String tasaVigente = request.getParameter("tasaVigente");
+				meses = altaFinanciamientoAction.obtenerDifMeses(idFinanciamiento, idDisposicion, context);
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("idFinanciamiento", idFinanciamiento);
+				map.put("meses", meses + " MESES");
+				map.put("idDisposicion", idDisposicion);
+				map.put("fechaFinal", fechaFinal);
+				map.put("empresa", empresa);
+				map.put("formaPago", formaPago);
+				map.put("montoDisposicion", montoDisposicion);
+				map.put("valorTasa", valorTasa);
+				map.put("tasaFija", tasaFija);
+				map.put("banco", banco);
+				map.put("divisa", divisa);
+				map.put("tipoTasa", tipoTasa);
+				map.put("puntos", puntos);
+				map.put("clabe", clabe);
+				map.put("fechaInicio", fechaInicio);
+				map.put("tasaBase", tasaBase);
+				map.put("tasaVigente", tasaVigente);
+				lista.add(map);
+			} else if (sNombreRep.equals("ReporteGastosCredito")) {
+				String idLinea = request.getParameter("idLinea");
+				String idDisposicion = request.getParameter("idDisposicion");
+				lista = gastosFinanciamientoC.obtenerReporteGastos(idLinea, Integer.parseInt(idDisposicion),
+						context);
+			} else if (sNombreRep.equals("ReporteVencimientosCB")) {
+				String amortizaciones = request.getParameter("hdJasonV");
+				String fecha = request.getParameter("fecha");
+				String divisa = request.getParameter("divisa");
+				String empresa = request.getParameter("empresa");
+				lista = vencimientoFinanciamientoCAction.obtenerReporteVencimientos(amortizaciones, fecha, divisa,
+						empresa, context);
+			} else if (sNombreRep.equals("ReporteAnalisisLineasResumen")) {
+				String analisis = request.getParameter("hdJasonRImprimir");
+				lista = reporteAnalisisLineasCAction.obtenerReporteAnalisisResumen(analisis, context);
+			} else if (sNombreRep.equals("ReporteAnalisisLineas")) {
+				String analisis = request.getParameter("hdJasonImprimir");
+				lista = reporteAnalisisLineasCAction.obtenerReporteAnalisis(analisis, context);
+			} else if (sNombreRep.equals("ReporteAlerta")) {
+				String pagos = request.getParameter("hdJason");
+				lista = alertaPagos.ReportePP(pagos, context);
+			} else if (sNombreRep.equals("ReporteBarridosFondeosFec")) {
+				lista = accion.obtenerReporteBarridosFeondeos(Integer.parseInt(noEmpresa),
+						Integer.parseInt(idUsuario), sFecha, context);
+				System.out.println("Report" + lista);
+			} else if (sNombreRep.equals("ReporteCuadreFondeo"))
+				lista2 = accion.obtenerReporteCuadreFeondeo(Integer.parseInt(noEmpresa),
+						Integer.parseInt(idUsuario), sFecha, context);
+			else if (sNombreRep.equals("ReporteFondeoBarridoAuto")) {
+				lista = accion.generarReporteAutomatico(hdJason, Integer.parseInt(noEmpresa),
+						Integer.parseInt(idArbol), Integer.parseInt(idBanco), idDivisa, idChequera, false,
+						tipoOperacion, false, "0", Integer.parseInt(idUsuario), sNomEmpresa, context);
+				lista = accion.obtenerReporteFondeo(Integer.parseInt(idUsuario), "", context);
+			}
+			System.out.println("Reporte: " + sNombreRep.toString());
+			if (sNombreRep.equals("ReporteFondeoBarridoAuto"))
+				sNombreRep = "ReporteFondeo";
+			System.out.println("If " + sNombreRep);
+
+			if (sNombreRep.equals("ReporteCuadreFondeo")) {
+				jrDataSource = new JRMapArrayDataSource(lista2.toArray());
+				System.out.println("List " + lista2);
+			} else
+				jrDataSource = new JRMapArrayDataSource(lista.toArray());
+			System.out.println("List2 " + lista);
+
+			String rutaServidor = application.getRealPath("/WEB-INF/reportes/");
+			String reportFile = rutaServidor + File.separator + sNombreRep + ".jrxml";
+
+			System.out.println("Reporte: <" + reportFile + "> <" + sNomEmpresa + ">");
+			Map<String, Object> parametros = new HashMap<String, Object>();
+			System.out.println("Parametros " + parametros);
+			List<Map<String, Object>> valores = new ArrayList<Map<String, Object>>();
+			System.out.println("Parametros " + valores);
+			JasperReport jasperReport = JasperCompileManager.compileReport(reportFile);
+			System.out.println("Despues de compile");
+			parametros.put("REPORT_DATA_SOURCE", jrDataSource);
+			parametros.put("TITULO", "REPORTE");
+			System.out.println("Parametros " + parametros);
+			System.out.println("Parametros " + jrDataSource);
+			if (sNombreRep.equals("ReporteFondeo") || sNombreRep.equals("ReporteFondeoBarrido")
+					|| sNombreRep.equals("ReporteBarridosFondeosFec") || sNombreRep.equals("ReporteCuadreFondeo")
+					|| sNombreRep.equals("ReporteArbolEstructura")
+					|| sNombreRep.equals("ReporteArbolEmpresaFondeo"))
+				parametros.put("EMPRESA", sNomEmpresa);
+			System.out.println("Parametros " + parametros);
+
+			if (sNombreRep.equals("ReporteFondeo")) {
+				parametros.put("OPERACION", tipoOperacion);
+				System.out.println("Parametros " + parametros);
+			}
+
+			if (sNombreRep.equals("ReporteArbolEmpresaFondeo")) {
+				parametros.put("OPERACION", sOperacion);
+				parametros.put("NOM_ARBOL", request.getParameter("NOM_ARBOL"));
+				System.out.println("Parametros " + parametros);
+			}
+
+			if (sNombreRep.equals("ReporteBarridosFondeosFec") || sNombreRep.equals("ReporteCuadreFondeo"))
+				parametros.put("FECHA", sFecha);
+			System.out.println("Parametros " + parametros);
+
+			Locale locale = new Locale("es", "MX");
+			System.out.println("Parametros " + parametros);
+			parametros.put(JRParameter.REPORT_LOCALE, locale);
+			System.out.println("Parametros " + parametros);
+			System.out.println("Antes de fill" + parametros);
+			System.out.println("Antes de fill" + jasperReport);
+			System.out.println("List2 " + lista);
+			jasperPrint = JasperFillManager.fillReport(jasperReport, parametros);
+			System.out.println("Despues de fill" + parametros);
+			System.out.println("Despues de fill" + jasperReport);
+			byte[] bytes = JasperExportManager.exportReportToPdf(jasperPrint);
+
+			response.setContentType("application/pdf");
+			response.setHeader("Content-Disposition", "inline; filename=\"" + sNombreRep + ".pdf\";");
+			//response.setHeader("Content-Disposition", "attachment; filename=\"" + numCta + ".pdf\";");
+			response.setHeader("Cache-Control", "no-cache");
+			response.setHeader("Pragma", "no-cache");
+			response.setDateHeader("Expires", 0);
+
+			response.setContentLength(bytes.length);
+			ServletOutputStream ouputStream = response.getOutputStream();
+			ouputStream.write(bytes, 0, bytes.length);
+			ouputStream.flush();
+			ouputStream.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Error en el reporte: " + e);
+		}
+	%>
+</body>
+</html>

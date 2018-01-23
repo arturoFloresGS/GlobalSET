@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="ReporteDetectadosyPendientes" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="descEmpresa" class="java.lang.String"/>
+	<parameter name="estatus" class="java.lang.String"/>
+	<parameter name="subtitulo" class="java.lang.String"/>
+	<field name="no_empresa" class="java.lang.String"/>
+	<field name="nom_empresa" class="java.lang.String"/>
+	<field name="id_banco" class="java.lang.String"/>
+	<field name="desc_banco" class="java.lang.String"/>
+	<field name="id_chequera" class="java.lang.String"/>
+	<field name="pend_tot_cargo" class="java.lang.Integer"/>
+	<field name="pend_imp_cargo" class="java.lang.Double"/>
+	<field name="movto_tot_cargo" class="java.lang.Integer"/>
+	<field name="movto_imp_cargo" class="java.lang.Double"/>
+	<field name="movto_tot_abono" class="java.lang.Integer"/>
+	<field name="movto_imp_abono" class="java.lang.Double"/>
+	<field name="banco_tot_cargo" class="java.lang.Integer"/>
+	<field name="banco_imp_cargo" class="java.lang.Double"/>
+	<field name="banco_tot_abono" class="java.lang.Integer"/>
+	<field name="banco_imp_abono" class="java.lang.Double"/>
+	<variable name="sumTotPend" class="java.lang.Integer" resetType="Group" resetGroup="GrupoEmpresa" calculation="Sum">
+		<variableExpression><![CDATA[$F{pend_tot_cargo}]]></variableExpression>
+	</variable>
+	<variable name="sumImpPend" class="java.lang.Double" resetType="Group" resetGroup="GrupoEmpresa" calculation="Sum">
+		<variableExpression><![CDATA[$F{pend_imp_cargo}]]></variableExpression>
+	</variable>
+	<variable name="sumTotCargoSet" class="java.lang.Integer" resetType="Group" resetGroup="GrupoEmpresa" calculation="Sum">
+		<variableExpression><![CDATA[$F{movto_tot_cargo}]]></variableExpression>
+	</variable>
+	<variable name="sumImpCargoSet" class="java.lang.Double" resetType="Group" resetGroup="GrupoEmpresa" calculation="Sum">
+		<variableExpression><![CDATA[$F{movto_imp_cargo}]]></variableExpression>
+	</variable>
+	<variable name="sumTotAbonoSet" class="java.lang.Integer" resetType="Group" resetGroup="GrupoEmpresa" calculation="Sum">
+		<variableExpression><![CDATA[$F{movto_tot_abono}]]></variableExpression>
+	</variable>
+	<variable name="sumImpAbonoSet" class="java.lang.Double" resetType="Group" resetGroup="GrupoEmpresa" calculation="Sum">
+		<variableExpression><![CDATA[$F{movto_imp_abono}]]></variableExpression>
+	</variable>
+	<variable name="sumTotCargoBanco" class="java.lang.Integer" resetType="Group" resetGroup="GrupoEmpresa" calculation="Sum">
+		<variableExpression><![CDATA[$F{banco_tot_cargo}]]></variableExpression>
+	</variable>
+	<variable name="sumImpCargoBanco" class="java.lang.Double" resetType="Group" resetGroup="GrupoEmpresa" calculation="Sum">
+		<variableExpression><![CDATA[$F{banco_imp_cargo}]]></variableExpression>
+	</variable>
+	<variable name="sumTotAbonoBanco" class="java.lang.Integer" resetType="Group" resetGroup="GrupoEmpresa" calculation="Sum">
+		<variableExpression><![CDATA[$F{banco_tot_abono}]]></variableExpression>
+	</variable>
+	<variable name="sumImpAbonoBanco" class="java.lang.Double" resetType="Group" resetGroup="GrupoEmpresa" calculation="Sum">
+		<variableExpression><![CDATA[$F{banco_imp_abono}]]></variableExpression>
+	</variable>
+	<variable name="sumGlobalTotPend" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{pend_tot_cargo}]]></variableExpression>
+	</variable>
+	<variable name="sumGlobalImpPend" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{pend_imp_cargo}]]></variableExpression>
+	</variable>
+	<variable name="sumGlobalTotCargoSet" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{movto_tot_cargo}]]></variableExpression>
+	</variable>
+	<variable name="sumGlobalImpCargoSet" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{movto_imp_cargo}]]></variableExpression>
+	</variable>
+	<variable name="sumGlobalTotAbonoSet" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{movto_tot_abono}]]></variableExpression>
+	</variable>
+	<variable name="sumGlobalImpAbonoSet" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{movto_imp_abono}]]></variableExpression>
+	</variable>
+	<variable name="sumGlobalTotCargoBanco" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{banco_tot_cargo}]]></variableExpression>
+	</variable>
+	<variable name="sumGlobalImpCargoBanco" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{banco_imp_cargo}]]></variableExpression>
+	</variable>
+	<variable name="sumGlobalTotAbonoBanco" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{banco_tot_abono}]]></variableExpression>
+	</variable>
+	<variable name="sumGlobalImpAbonoBanco" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{banco_imp_abono}]]></variableExpression>
+	</variable>
+	<group name="GrupoEmpresa">
+		<groupExpression><![CDATA[$F{id_banco}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<rectangle>
+					<reportElement x="3" y="3" width="144" height="10" forecolor="#D8E0FF" backcolor="#D8E0FF"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="19" y="17" width="129" height="10" forecolor="#D8E0FF" backcolor="#D8E0FF"/>
+				</rectangle>
+				<textField isBlankWhenNull="true" hyperlinkType="None">
+					<reportElement x="6" y="3" width="33" height="11"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{no_empresa}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true" hyperlinkType="None">
+					<reportElement x="39" y="3" width="108" height="11"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{nom_empresa}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true" hyperlinkType="None">
+					<reportElement x="18" y="17" width="31" height="10"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{id_banco}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true" hyperlinkType="None">
+					<reportElement x="49" y="17" width="78" height="10"/>
+					<textElement>
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{desc_banco}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="14">
+				<textField isBlankWhenNull="true" hyperlinkType="None">
+					<reportElement x="148" y="4" width="24" height="10"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Integer"><![CDATA[$V{sumTotPend}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true" hyperlinkType="None">
+					<reportElement x="173" y="4" width="50" height="10"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumImpPend}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true" hyperlinkType="None">
+					<reportElement x="240" y="4" width="27" height="10"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Integer"><![CDATA[$V{sumTotCargoSet}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true" hyperlinkType="None">
+					<reportElement x="268" y="4" width="47" height="10"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumImpCargoSet}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true" hyperlinkType="None">
+					<reportElement x="318" y="4" width="28" height="10"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Integer"><![CDATA[$V{sumTotAbonoSet}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true" hyperlinkType="None">
+					<reportElement x="347" y="4" width="47" height="10"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumImpAbonoSet}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true" hyperlinkType="None">
+					<reportElement x="403" y="4" width="23" height="10"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Integer"><![CDATA[$V{sumTotCargoBanco}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true" hyperlinkType="None">
+					<reportElement x="427" y="4" width="47" height="10"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumImpCargoBanco}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true" hyperlinkType="None">
+					<reportElement x="479" y="4" width="24" height="10"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Integer"><![CDATA[$V{sumTotAbonoBanco}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true" hyperlinkType="None">
+					<reportElement x="504" y="4" width="47" height="10"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumImpAbonoBanco}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="148" y="3" width="75" height="1" forecolor="#999999"/>
+					<graphicElement>
+						<pen lineWidth="1.0"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement x="240" y="3" width="155" height="1" forecolor="#999999"/>
+					<graphicElement>
+						<pen lineWidth="1.0"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement x="403" y="3" width="150" height="1" forecolor="#999999"/>
+					<graphicElement>
+						<pen lineWidth="1.0"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="58">
+			<textField hyperlinkType="None">
+				<reportElement x="118" y="3" width="426" height="20" forecolor="#B2C8FF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{descEmpresa}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="118" y="25" width="426" height="17" forecolor="#B2C8FF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{subtitulo}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="198" y="44" width="217" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{estatus}]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a" hyperlinkType="None">
+				<reportElement x="461" y="44" width="83" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image hyperlinkType="None">
+				<reportElement x="15" y="1" width="58" height="40"/>
+				<imageExpression class="java.lang.String"><![CDATA["..//..//img//logo_set.jpg"]]></imageExpression>
+			</image>
+			<image hyperlinkType="None">
+				<reportElement x="720" y="1" width="58" height="40"/>
+				<imageExpression class="java.lang.String"><![CDATA["..//..//img//empresas//logoreporte.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="130" y="44" width="54" height="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTATUS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="44" width="39" height="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORA:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="45">
+			<staticText>
+				<reportElement x="3" y="25" width="47" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BANCO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="25" width="47" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CHEQUERA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="161" y="25" width="47" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PENDIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="25" width="47" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CARGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="25" width="47" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ABONO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="406" y="25" width="47" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CARGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="491" y="25" width="47" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ABONO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="267" y="4" width="69" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SET]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="437" y="4" width="69" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BANCO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="239" y="41" width="150" height="1" forecolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="147" y="41" width="75" height="1" forecolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="405" y="41" width="150" height="1" forecolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14">
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="86" y="3" width="47" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{id_chequera}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="148" y="3" width="24" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{pend_tot_cargo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="173" y="3" width="50" height="11"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{pend_imp_cargo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="240" y="3" width="27" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{movto_tot_cargo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="268" y="3" width="47" height="11"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{movto_imp_cargo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="318" y="3" width="28" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{movto_tot_abono}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="347" y="3" width="47" height="11"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{movto_imp_abono}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="403" y="3" width="23" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{banco_tot_cargo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="427" y="3" width="47" height="11"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{banco_imp_cargo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="479" y="3" width="24" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{banco_tot_abono}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="504" y="3" width="47" height="11"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{banco_imp_abono}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="18"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20">
+			<textField evaluationTime="Report" hyperlinkType="None">
+				<reportElement x="515" y="0" width="40" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="480" y="0" width="34" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="20">
+			<staticText>
+				<reportElement x="69" y="7" width="64" height="12"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRAN TOTAL:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="148" y="7" width="24" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{sumGlobalTotPend}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="173" y="7" width="50" height="12"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumGlobalImpPend}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="240" y="7" width="27" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{sumGlobalTotCargoSet}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="268" y="7" width="47" height="12"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumGlobalImpCargoSet}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="318" y="7" width="28" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{sumGlobalTotAbonoSet}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="347" y="7" width="47" height="12"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumGlobalImpAbonoSet}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="405" y="7" width="21" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{sumGlobalTotCargoBanco}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="427" y="7" width="47" height="12"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumGlobalImpCargoBanco}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="480" y="7" width="23" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{sumGlobalTotAbonoBanco}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement x="504" y="7" width="47" height="12"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sumGlobalImpAbonoBanco}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

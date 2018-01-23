@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+  <appender name="R" class="org.apache.log4j.DailyRollingFileAppender"> 
+    <param name="file" value="C:/websetlog/WebSetQA.log"/> 
+    <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+    <!-- <param name="MaxFileSize" value="1MB"/>-->
+    <!-- Keep one backup file -->
+    <!--<param name="MaxBackupIndex" value="1"/> -->
+    <layout class="org.apache.log4j.PatternLayout">
+       <param name="ConversionPattern" value="[%d{dd/MM/yy HH:mm:ss} - %p]- [%t] (%F:%L) - %m%n"/>
+      <!-- param name="ConversionPattern" value="[%p] - [%t] - [%c] - %m%n"/-->
+    </layout>
+    <!-- <level value="info"/> -->
+  </appender>
+  <root>
+    <priority value ="error" />
+    <appender-ref ref="R" />
+  </root>
+</log4j:configuration>

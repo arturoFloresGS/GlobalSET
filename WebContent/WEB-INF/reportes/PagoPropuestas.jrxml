@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="PagoPropuestas" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecHoy" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<field name="idGrupoFlujo" class="java.lang.String"/>
+	<field name="descGrupoFlujo" class="java.lang.String"/>
+	<field name="cveControl" class="java.lang.String"/>
+	<field name="fecPropuesta" class="java.util.Date"/>
+	<field name="importeMn" class="java.lang.Double"/>
+	<field name="importeDls" class="java.lang.Double"/>
+	
+	<variable name="vImporteMn" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{importeMn}]]></variableExpression>
+	</variable>
+	<variable name="vImporteDls" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{importeDls}]]></variableExpression>
+	</variable>
+	
+	
+	<pageHeader>
+		<band height="44">
+			<staticText>
+				<reportElement x="150" y="20" width="300" height="20" forecolor="#58ACFA"/>
+				<textElement/>
+				<text><![CDATA[PAGO DE PROPUESTAS POR EMPRESAS]]></text>
+			</staticText>
+			<image>
+				<reportElement x="15" y="1" width="58" height="40"/>
+				<imageExpression><![CDATA["..//..//img//logo_set.jpg"]]></imageExpression>
+			</image>
+			<image hyperlinkType="None">
+				<reportElement x="485" y="1" width="58" height="40"/>
+				<imageExpression><![CDATA["..//..//img//empresas//logoreporte.png"]]></imageExpression>
+			</image>
+			
+			<textField>
+				<reportElement x="504" y="28" width="49" height="13" forecolor="#58ACFA"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{fecHoy}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="17">
+			<line>
+				<reportElement x="0" y="2" width="553" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="13" width="553" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="2" width="72" height="15"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[No. Empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="2" width="110" height="15"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="182" y="2" width="69" height="15"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Cve. Control]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="262" y="2" width="100" height="15"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Fec. Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="362" y="2" width="100" height="15"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Importe MN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="462" y="2" width="91" height="15"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Importe DLS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21">
+			<textField>
+				<reportElement x="0" y="0" width="72" height="10"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{idGrupoFlujo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="72" y="0" width="110" height="10"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{descGrupoFlujo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="182" y="0" width="69" height="10"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cveControl}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" hyperlinkType="None">
+				<reportElement x="262" y="0" width="100" height="10"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fecPropuesta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="362" y="0" width="40" height="10"/>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{importeMn}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="462" y="0" width="40" height="10"/>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{importeDls}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="10"></band>
+	</columnFooter>
+	<pageFooter>
+		<band height="29">
+			<textField>
+				<reportElement x="271" y="0" width="152" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="423" y="0" width="123" height="20"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42">
+			<rectangle>
+				<reportElement x="285" y="16" width="50" height="20" forecolor="#333333" backcolor="#333333"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="282" y="12" width="50" height="20" forecolor="#CCCCCC" backcolor="#CCCCCC"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="285" y="12" width="45" height="17"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="362" y="16" width="100" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{vImporteMn}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="462" y="16" width="100" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{vImporteDls}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

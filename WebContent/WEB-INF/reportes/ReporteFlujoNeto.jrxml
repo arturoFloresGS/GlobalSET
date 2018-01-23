@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="ReporteFlujoNeto" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="sNomEmpresa" class="java.lang.String"/>
+	<parameter name="sDescDivisa" class="java.lang.String"/>
+	<parameter name="sFecHoy" class="java.lang.String"/>
+	<parameter name="sFecValor" class="java.lang.String"/>
+	<field name="noEmpresa" class="java.lang.Integer"/>
+	<field name="nomEmpresa" class="java.lang.String"/>
+	<field name="saldoInicialNeto" class="java.lang.Double"/>
+	<field name="si" class="java.lang.Double"/>
+	<field name="ibm" class="java.lang.Double"/>
+	<field name="efm" class="java.lang.Double"/>
+	<field name="totalmn" class="java.lang.Double"/>
+	<field name="pcm" class="java.lang.Double"/>
+	<field name="sc" class="java.lang.Double"/>
+	<field name="saldoC" class="java.lang.Double"/>
+	<field name="sdoFinal" class="java.lang.Double"/>
+	<variable name="saldoInicialNeto" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{saldoInicialNeto}]]></variableExpression>
+	</variable>
+	<variable name="si" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{si}]]></variableExpression>
+	</variable>
+	<variable name="ibm" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{ibm}]]></variableExpression>
+	</variable>
+	<variable name="efm" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{efm}]]></variableExpression>
+	</variable>
+	<variable name="totalmn" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalmn}]]></variableExpression>
+	</variable>
+	<variable name="saldoC" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{saldoC}]]></variableExpression>
+	</variable>
+	<variable name="sdoFinal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{sdoFinal}]]></variableExpression>
+	</variable>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="11"/>
+	</title>
+	<pageHeader>
+		<band height="75">
+			<textField hyperlinkType="None">
+				<reportElement x="362" y="27" width="80" height="14" forecolor="#58ACFA"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{sFecValor}]]></textFieldExpression>
+			</textField>
+			<image hyperlinkType="None">
+				<reportElement x="15" y="1" width="58" height="40"/>
+				<imageExpression class="java.lang.String"><![CDATA["..//..//img//logo_set.jpg"]]></imageExpression>
+			</image>
+			<image hyperlinkType="None">
+				<reportElement x="720" y="1" width="58" height="40"/>
+				<imageExpression class="java.lang.String"><![CDATA["..//..//img//empresas//logoreporte.png"]]></imageExpression>
+			</image>
+			<textField hyperlinkType="None">
+				<reportElement x="261" y="27" width="80" height="14" forecolor="#58ACFA"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{sDescDivisa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="123" y="27" width="139" height="14" forecolor="#58ACFA"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONSULTA FLUJO NETO EN]]></text>
+			</staticText>
+			<textField hyperlinkType="None">
+				<reportElement x="157" y="0" width="238" height="25" forecolor="#58ACFA"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{sNomEmpresa}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="490" y="38" width="62" height="11" forecolor="#58ACFA"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{sFecHoy}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="50" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="72" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="51" width="12" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="97" y="51" width="64" height="21"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Saldo Inicial Coinversión Neto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="51" width="36" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="51" width="49" height="21"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Saldo Inicial Coinversión ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="238" y="51" width="49" height="21"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Aportaciones Coinversión ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="304" y="51" width="49" height="21"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Retiros Coinversión ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="51" width="49" height="21"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Saldo Coinversión ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="432" y="51" width="36" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Créditos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="485" y="52" width="64" height="21"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Saldo Final Coinversión Neto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="339" y="27" width="24" height="14" forecolor="#58ACFA"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEL]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="7"/>
+	</columnHeader>
+	<detail>
+		<band height="22">
+			<textField hyperlinkType="None">
+				<reportElement x="1" y="0" width="20" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{noEmpresa}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="24" y="0" width="71" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nomEmpresa}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="97" y="0" width="64" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{saldoInicialNeto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="165" y="0" width="66" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{si}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="235" y="1" width="64" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ibm}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="301" y="1" width="64" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{efm}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="368" y="0" width="59" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{totalmn}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="428" y="0" width="52" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{saldoC}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="486" y="1" width="65" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{sdoFinal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="15"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20">
+			<textField hyperlinkType="None">
+				<reportElement x="231" y="4" width="39" height="13"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Pág. "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" hyperlinkType="None">
+				<reportElement x="270" y="4" width="38" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="35">
+			<rectangle>
+				<reportElement x="6" y="9" width="91" height="20" backcolor="#000000"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="6" width="90" height="20" forecolor="#CCCCCC" backcolor="#CCCCCC"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="40" y="9" width="46" height="14"/>
+				<textElement/>
+				<text><![CDATA[Registros]]></text>
+			</staticText>
+			<textField hyperlinkType="None">
+				<reportElement x="8" y="8" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="100" y="6" width="449" height="20" forecolor="#CCCCCC" backcolor="#CCCCCC"/>
+			</rectangle>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="100" y="8" width="65" height="14"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{saldoInicialNeto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="165" y="9" width="66" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{si}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="234" y="9" width="67" height="14"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{ibm}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="301" y="9" width="64" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{efm}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="368" y="9" width="59" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totalmn}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="427" y="9" width="53" height="14"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{saldoC}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" hyperlinkType="None">
+				<reportElement x="486" y="9" width="63" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sdoFinal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

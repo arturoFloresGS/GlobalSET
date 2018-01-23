@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="PosicionChequeras" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecHoy" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	
+	<field name="nomEmpresa" class="java.lang.String"/>
+	<field name="descBanco" class="java.lang.String"/>
+	<field name="descChequera" class="java.lang.String"/>
+	<field name="idChequera" class="java.lang.String"/>
+	<field name="idDivisa" class="java.lang.String"/>
+	<field name="saldoInicial" class="java.lang.Double"/>
+	<field name="cargo" class="java.lang.Double"/>
+	<field name="abono" class="java.lang.Double"/>
+	<field name="saldoFinal" class="java.lang.Double"/>
+	
+	<variable name="inicial" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{saldoInicial}]]></variableExpression>
+	</variable>
+	
+	<variable name="ingresos" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{abono}]]></variableExpression>
+	</variable>
+	
+	<variable name="egresos" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{cargo}]]></variableExpression>
+	</variable>
+	
+	<variable name="final" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{saldoFinal}]]></variableExpression>
+	</variable>
+	
+	<pageHeader>
+		<band height="56">
+			<image>
+				<reportElement x="15" y="1" width="58" height="40"/>
+				<imageExpression><![CDATA["..//..//img//logo_set.jpg"]]></imageExpression>
+			</image>
+			<image hyperlinkType="None">
+				<reportElement x="485" y="1" width="58" height="40"/>
+				<imageExpression class="java.lang.String"><![CDATA["..//..//img//empresas//logoreporte.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="210" y="24" width="223" height="20" forecolor="#58ACFA"/>
+				<textElement/>
+				<text><![CDATA[POSICIÓN DE CHEQUERAS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="514" y="43" width="49" height="13" forecolor="#58ACFA"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{fecHoy}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="17">
+			<staticText>
+				<reportElement x="112" y="2" width="70" height="15"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Banco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="188" y="2" width="80" height="15"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="2" width="110" height="15"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="456" y="2" width="70" height="15"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Egresos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="2" width="58" height="15"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Chequera]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="302" y="2" width="30" height="15"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Divisa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="2" width="70" height="15"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Saldo Inicial]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="2" width="553" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="13" width="553" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="404" y="2" width="50" height="15"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Ingresos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="520" y="2" width="60" height="15"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Saldo Final]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12">
+			<textField>
+				<reportElement x="3" y="0" width="108" height="10"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nomEmpresa}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="316" y="0" width="54" height="10"/>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{saldoInicial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="0" width="60" height="10"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{descBanco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="0" width="73" height="10"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{descChequera}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="0" width="45" height="10"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{idChequera}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="305" y="0" width="15" height="10"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{idDivisa}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="426" y="0" width="54" height="10"/>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{cargo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="377" y="0" width="54" height="10"/>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{abono}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="495" y="0" width="54" height="10"/>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{saldoFinal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="30">
+			<textField evaluationTime="Report">
+				<reportElement x="433" y="8" width="123" height="20"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="281" y="8" width="152" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="23">
+			<rectangle>
+				<reportElement x="250" y="2" width="305" height="20" forecolor="#FFFFFF" backcolor="#D8E0E9"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="255" y="4" width="34" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Totales:]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;-#,##0.00">
+				<reportElement x="307" y="5" width="65" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{inicial}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00">
+				<reportElement x="368" y="5" width="65" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{ingresos}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00">
+				<reportElement x="417" y="5" width="65" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{egresos}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00">
+				<reportElement x="486" y="5" width="65" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{final}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

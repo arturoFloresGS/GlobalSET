@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2016-12-27T17:22:48 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteArbolEmpPresInter" pageWidth="792" pageHeight="612" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="53286f1f-e023-48f1-8141-913b990f1ea1">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="EMPRESA" class="java.lang.String"/>
+	<field name="empresaOrigen" class="java.lang.String"/>
+	<field name="empresaDestino" class="java.lang.String"/>
+	<field name="cuentaOrigen" class="java.lang.String"/>
+	<field name="cuentaDestino" class="java.lang.String"/>
+	<field name="fondeo" class="java.math.BigDecimal"/>
+	<field name="barrido" class="java.math.BigDecimal"/>
+	<variable name="sumaBarridos" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{barrido}]]></variableExpression>
+	</variable>
+	<variable name="sumaFondeos" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{fondeo}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="57" splitType="Stretch">
+			<image>
+				<reportElement x="15" y="4" width="58" height="40" uuid="77303819-c20b-4d07-8b2a-8efd87f341c4"/>
+				<imageExpression><![CDATA["..//..//img//logo_set.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="693" y="1" width="58" height="40" uuid="eb64d7d6-4b22-47e6-8eaf-bfefd7bbb0c8"/>
+				<imageExpression><![CDATA["..//..//img//empresas//logoreporte.png"]]></imageExpression>
+			</image>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="644" y="41" width="100" height="14" uuid="b7f2511c-8792-406f-8f3d-63ed4e16aeb2"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="153" y="7" width="457" height="42" uuid="357adbf3-a8e8-4098-89a9-302a5f16f7fd"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["FONDEOS DE " + $P{EMPRESA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="4" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="17" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="751" height="16" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="8db29e02-b6de-4bc2-8992-1f2ebdba39d6"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="4" y="1" width="88" height="14" uuid="6a2c987e-e902-46ea-8cf4-5d64ff0db66b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empresa Origen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="1" width="101" height="14" uuid="386b4421-789d-449c-9c46-319d8365a7a5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empresa Destino]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="234" y="1" width="70" height="14" uuid="7e06c3a9-0b7d-4606-9bd1-fc714249218a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chequera origen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="572" y="1" width="70" height="14" uuid="bd7c0ddf-a178-4268-b555-d8bc4e5dad39"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chequera Destino]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="652" y="1" width="79" height="14" uuid="851cb166-e18e-46f9-8f6d-f9cd471d0466"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fondeo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField>
+				<reportElement x="4" y="0" width="220" height="12" uuid="2f6b4383-a625-48a7-b6b5-954bb033a1e1"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{empresaOrigen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="324" y="0" width="231" height="12" uuid="9ba98763-bdc0-4600-8930-bf939552b998"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{empresaDestino}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="234" y="0" width="70" height="12" uuid="313d91c5-6ffb-44c5-941f-1ddffb98c520"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cuentaOrigen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="572" y="0" width="70" height="12" uuid="7c382031-6875-46fb-960f-fa11d421370a"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cuentaDestino}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="652" y="0" width="80" height="12" uuid="b6bf7363-f20d-4c7d-8a01-878c5ec75227"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fondeo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="17" splitType="Stretch">
+			<textField>
+				<reportElement x="652" y="0" width="80" height="12" uuid="11d3f93e-e77c-4245-ac9c-9631dbfc2fc4"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumaFondeos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="1" width="149" height="12" uuid="b0a90b60-03ce-401f-b38d-2ac2e906206a"/>
+				<textElement>
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="14" splitType="Stretch">
+			<textField>
+				<reportElement x="635" y="0" width="75" height="12" uuid="6c57a5f5-1d33-40e4-8d40-db81b4997a50"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pág "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="710" y="0" width="40" height="12" uuid="bbe60409-de9c-4fcc-96c9-3302c26d3ecc"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

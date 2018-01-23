@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteArbolEmpPresInter" pageWidth="792" pageHeight="612" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="eb280293-e64c-498c-a7ce-2339468123ad">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="19"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="sFecHoy" class="java.lang.String"/>
+	<field name="padre" class="java.lang.String"/>
+	<field name="hijo" class="java.lang.String"/>
+	<field name="nieto" class="java.lang.String"/>
+	<field name="bisnieto" class="java.lang.String"/>
+	<field name="tatara" class="java.lang.String"/>
+	<field name="chosno1" class="java.lang.String"/>
+	<field name="chosno2" class="java.lang.String"/>
+	<field name="chosno3" class="java.lang.String"/>
+	<field name="chosno4" class="java.lang.String"/>
+	<field name="divisa" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="6" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="62" splitType="Stretch">
+			<image>
+				<reportElement x="7" y="2" width="58" height="40" uuid="f57d962a-ef3c-4d58-ad7e-ae72b2f2ccc3"/>
+				<imageExpression><![CDATA["..//..//img//logo_set.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="693" y="2" width="58" height="40" uuid="177794cd-41cd-4c34-9665-78d441804a4c"/>
+				<imageExpression><![CDATA["..//..//img//empresas//logoreporte.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="143" y="10" width="457" height="21" forecolor="#000000" uuid="608804c6-1028-4fa6-9e62-b8ccbe384470"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ÁRBOL DE FONDEO DE EMPRESAS]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="647" y="46" width="100" height="12" uuid="7df6f4a3-b9d8-42b2-aec8-9603c4d54b82"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="13" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="751" height="12" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="125343df-64c0-4378-a8c7-03513e352c13"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="4" y="0" width="65" height="12" uuid="c57cd752-f3ad-4486-9869-5674b6eaa4a9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Padre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="0" width="65" height="12" uuid="8a30d953-e26d-489e-bbfd-bfeccaabfb91"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hijo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="145" y="0" width="65" height="12" uuid="0353f87c-9322-4426-8c76-1ac33b7e9d64"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nieto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="215" y="0" width="65" height="12" uuid="26876f14-d4c7-4431-bd70-a0a652d5d98a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bisnieto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="0" width="65" height="12" uuid="3d2c3ddb-639d-4983-8a09-86766df2f58e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tataranieto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="0" width="65" height="12" uuid="6aff6d77-26b9-4d19-89f2-9ce884317e58"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chosno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="0" width="65" height="12" uuid="15a79dc8-eb98-4a65-8db7-4b604ce38ad8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chosno2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="495" y="0" width="65" height="12" uuid="bbb59268-d74c-41db-a0c2-ad0651c3c296"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chosno3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="565" y="0" width="65" height="12" uuid="f177ccc8-fde7-486e-ab5a-22c48476194a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chosno4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="680" y="0" width="65" height="12" uuid="17269269-e4b1-40d5-b8a4-aa7f162d9101"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Divisa]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="200" height="18" uuid="994d2201-ad54-4b3d-bd09-7862613aae84"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{padre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="75" y="0" width="200" height="18" uuid="04036bf8-98af-4aa4-bf9a-921bad42fe42"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hijo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="145" y="0" width="200" height="18" uuid="b66a52b6-3738-4a79-9851-7e5f5aa140c0"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nieto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="215" y="0" width="200" height="18" uuid="da7edefc-0f20-4f6f-af0c-872df97ef937"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bisnieto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="285" y="0" width="200" height="18" uuid="3ad0474c-48c0-44cc-92a4-2951a638889b"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tatara}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="0" width="200" height="18" uuid="2ae8d08b-a22a-4bf6-b656-10b942d72c67"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{chosno1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="425" y="0" width="200" height="18" uuid="038c8552-a6a9-43cf-912b-d4777ad194fb"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{chosno2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="495" y="0" width="200" height="18" uuid="2dbe47f5-3ea7-4aff-b0bb-565e2bab09ff"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{chosno3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="565" y="0" width="148" height="18" uuid="b02af1aa-eda6-4250-ac07-487bee8f781e"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{chosno4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="720" y="0" width="30" height="12" uuid="a69d59f4-2b20-4566-892b-524b8dbe1cf0"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{divisa}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="1" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="14" splitType="Stretch">
+			<textField>
+				<reportElement x="635" y="1" width="75" height="12" uuid="834bf325-c2a2-4a4d-b22d-85bcca5020c2"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="710" y="1" width="40" height="12" uuid="1787a78f-3acf-43f3-a0da-afd075579f1e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
